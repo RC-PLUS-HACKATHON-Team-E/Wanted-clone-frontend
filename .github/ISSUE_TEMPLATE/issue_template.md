@@ -1,5 +1,5 @@
 ---
-name: 템플릿 제목
+name: issue_template
 about: 이슈 설명
 title: ''
 labels: ''
