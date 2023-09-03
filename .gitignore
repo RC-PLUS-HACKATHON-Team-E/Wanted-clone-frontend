@@ -119,3 +119,6 @@ dist
 
 #보안관련
 package-lock.json
+
+#기타
+*.idea
