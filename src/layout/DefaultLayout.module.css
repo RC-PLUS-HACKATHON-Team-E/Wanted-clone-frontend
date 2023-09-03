@@ -1,0 +1,11 @@
+/* Import FontAwesome , 폰트 스타일 */
+@import url('//use.fontawesome.com/releases/v4.7.0/css/font-awesome-css.min.css');
+
+/* Apply FontAwesome to all text */
+* {
+  font-family: 'FontAwesome', Arial, sans-serif;
+}
+
+.DefaultLayout {
+  text-align: center;
+}
