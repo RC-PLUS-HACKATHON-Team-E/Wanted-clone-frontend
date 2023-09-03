@@ -1,26 +1,28 @@
-//초기 상태값 설정
-const initialState = {
-  user: {},
-}
+// store/reducers/auth.js
 
-//리듀서 설정
-const LoginReducer = (state = initialState, action) => {
+const initialState = {
+  isLoggedIn: false,
+  user: null,
+};
+
+export default function authReducer(state = initialState, action) {
   switch (action.type) {
-    case 'LOGIN': {
+    case 'LOGIN':
       return {
         ...state,
-        user: {
-          ...state.user,
-          name: action.data.name,
-        },
-      }
-    }
-    default: {
+        isLoggedIn: true,
+      };
+    case 'LOGOUT':
       return {
         ...state,
-      }
-    }
+        isLoggedIn: false,
+      };
+    case 'UPDATE_USER':
+      return {
+        ...state,
+        user: action.payload,
+      };
+    default:
+      return state;
   }
 }
-
-export default LoginReducer
