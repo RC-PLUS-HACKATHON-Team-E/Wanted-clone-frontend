@@ -1,111 +1,131 @@
-import React, {useState} from 'react'
-import {useNavigate} from 'react-router-dom'
-import {loginAction} from '../../store/actions/login'
-import {useDispatch} from 'react-redux'
-import styled from 'styled-components'
-import {isEmpty} from '../../utils/utility'
-import {supportDeviceSize} from '../../components/styled'
+import { useContext, useEffect, useState } from "react";
+import { ReactComponent as Loginlogo } from '../../assets/login-logo.svg';
+import { ReactComponent as Google } from "../../assets/google.svg";
+import { ReactComponent as Apple } from '../../assets/apple.svg';
+import { ReactComponent as Kakao } from '../../assets/kakao.svg';
+import Styles from './Login.module.css'; // CSS 모듈 import
 
-/**
- * 로그인
- * @category Login
- */
-const LoginPage = () => {
-  const navigate = useNavigate()
-  const dispatch = useDispatch()
+function Login(props) {
+  let [email, setEmail] = useState('');
+  let [selectedLanguage, setSelectedLanguage] = useState('ko');
+  let flagImageSrc = '';
+  let [emailIsValid, setEmailIsValid] = useState();
 
-  const [name, setName] = useState('')
-
-  // Input 에서 엔터키 누를 경우
-  const onKeyPress = event => {
-    if (event.key === 'Enter') {
-      handleLogin().then()
-    }
+  if (selectedLanguage === 'ko') {
+    flagImageSrc = 'https://static.wanted.co.kr/images/wantedoneid/ico_KR.svg';
+  } else if (selectedLanguage === 'en') {
+    flagImageSrc = 'https://static.wanted.co.kr/images/wantedoneid/ico_WW.svg'; // 다른 언어에 대한 이미지 URL로 변경
   }
 
-  // 로그인 버튼 클릭
-  const handleLogin = async () => {
-    try {
-      if (isEmpty(name)) {
-        alert('이름을 입력해 주세요.')
-        return
-      }
+  const handleEmailChange = (e) => {
+    const inputEmail = e.target.value;
+    setEmail(inputEmail);
 
-      //서버통신 코드 작성
-
-      //redux 넣어주기
-      dispatch(loginAction({name: name}))
-
-      navigate(`/`)
-    } catch (error) {
-      alert('네트워크 통신 실패. 잠시후 다시 시도해주세요.')
-    }
+    /* 이메일 정규 표현식 */
+    const emailPattern = /^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,}$/;
+    setEmailIsValid(emailPattern.test(inputEmail));
+    console.log(emailIsValid);
+    /*
+    [요약 설명]
+    1. test() 메소드: 인수로 전달된 문자열에 특정 패턴과 일치하는 문자열이 있는지를 검색
+    2. 패턴과 일치하는 문자열이 있으면 true를, 없으면 false를 반환
+    */
   }
+
+  const handleEmailCheck = (e) => {
+    if (email === 'abc@gmail.com') {
+      props.navigate('/login/password');
+    } else {
+      props.navigate('/signup');
+    }
+  };
 
   return (
-    <LoginRoot>
-      <Wrap>
-        <div style={{fontSize: '2.5rem', fontWeight: '600', marginBottom: '4rem'}}>로그인</div>
-        <div style={{fontSize: '1.8rem', fontWeight: '600', marginBottom: '1rem'}}>이름</div>
-        <InputWrap
-          value={name}
-          onChange={e => setName(e.target.value)}
-          placeholder='이름을 입력해주세요.'
-          onKeyPress={onKeyPress}
-        />
-        <LoginButton onClick={handleLogin}>로그인</LoginButton>
-      </Wrap>
-    </LoginRoot>
-  )
+    <div className={Styles['login-background']}>
+      <div className={Styles['login-wrapper']}>
+        <div className={Styles['login-header']}>
+          <div className={Styles['loginlogo']}>
+            <Loginlogo width="93" height="28"></Loginlogo>
+          </div>
+          <h1>하나의 계정으로
+            <br />
+            더욱 편리하게</h1>
+          <h2>원티드가 제공하는 서비스를
+            <br />
+            하나의 계정으로 모두 이용할 수 있습니다.
+          </h2>
+        </div>
+        <div className={Styles['login-container']}>
+          <form onSubmit={handleEmailCheck}>
+            <div className={Styles['email-label']}>
+              <label htmlFor="email">이메일</label>
+            </div>
+            <input
+              /**label for와 input의 id값 */
+              type="email"
+              placeholder="이메일을 입력해주세요"
+              name="email"
+              id="email"
+              className={`${Styles['email-input']} ${emailIsValid || email.length === 0 ? Styles['email-input-success'] : Styles['email-input-error']}`}
+              onChange={handleEmailChange}
+            ></input>
+            {email.length > 0 &&
+              <div className={`${Styles['email']} ${emailIsValid ? Styles['success'] : Styles['error']}`}>
+                올바른 이메일을 입력해주세요.
+              </div>}
+            <button
+              type="submit"
+              className={`${Styles['confirm-button']} ${emailIsValid ? Styles['success'] : ''}`}
+              onClick={() => { /* 존재하는 이메일인지 확인하는 함수 추가 */ }}
+            >
+              이메일로 계속하기
+            </button>
+          </form>
+          <p className={Styles['or']}>또는</p>
+          <div className={Styles['social-login-wrapper']}>
+            <button type="button" className={Styles['social-login']}>
+              <span>
+                <Apple width="56" height="56"></Apple>
+              </span>
+              <p>Apple</p>
+            </button>
+            <button type="button" className={Styles['social-login']}>
+              <span>
+                <Google width="56" height="56"></Google>
+              </span>
+              <p>Google</p>
+            </button>
+            <button type="button" className={Styles['social-login']}>
+              <span>
+                <Kakao width="56" height="56"></Kakao>
+              </span>
+              <p>Kakao</p>
+            </button>
+          </div>
+          <button className={Styles['find-email-button']}>
+            계정을 잊으셨나요?
+          </button>
+          <hr className={Styles['additional-info-hr']}></hr>
+          <div className={Styles['additional-info-wrapper']}>
+            <button className={Styles['terms-of-service']}>
+              이용약관
+            </button>
+            <button className={Styles['privacy-policy']}>
+              개인정보처리방침
+            </button>
+          </div>
+          <p className={Styles['Wantedlab']}>© Wantedlab, Inc.</p>
+          <div className={Styles['language-select-box']}>
+            <img src={flagImageSrc} width="23" height="16" className={Styles['flag-mark']} />
+            <select className={Styles['lang']} value={selectedLanguage} onChange={(e) => { setSelectedLanguage(e.target.value) }}>
+              <option value="ko">한국어</option>
+              <option value="en">English</option>
+            </select>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
 }
 
-const LoginRoot = styled.div`
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  width: 1080px;
-  height: 100vh;
-  background-color: green;
-
-  @media all and (max-width: ${supportDeviceSize}px) {
-    width: 100vw;
-  }
-`
-
-const Wrap = styled.div`
-  display: flex;
-  flex-direction: column;
-  align-items: left;
-  justify-content: center;
-  width: 45rem;
-  height: 30rem;
-  padding: 3rem;
-  border: 0.5rem solid yellow;
-  background-color: red;
-`
-
-const InputWrap = styled.input`
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  width: 100%;
-  height: 4rem;
-  padding-left: 1rem;
-  margin-bottom: 6rem;
-`
-
-const LoginButton = styled.div`
-  width: 100%;
-  padding: 1rem;
-  border-radius: 0.6rem;
-  background-color: rgb(59, 105, 246);
-  font-size: 1.8rem;
-  font-weight: 600;
-  color: white;
-  text-align: center;
-  cursor: pointer;
-`
-
-export default LoginPage
+export default Login;

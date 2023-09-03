@@ -1,0 +1,270 @@
+.login-background {
+    width: 100%;
+    height: 100%;
+    background: #f7f7f7;
+    position: fixed;
+    /*login-wrapper를 웹페이지 상에서 가운데 정렬*/
+    display: flex; /* Add display: flex to the parent container */
+    justify-content: center; /* Center horizontally */
+    align-items: center; /* Center vertically */
+}
+
+.login-wrapper {
+    position: relative;
+    background-color: white;
+    border: 1px solid rgb(213, 213, 213);
+    border-radius: 10px;
+    padding: 20px;
+    width: 400px;
+    height: 605px; /* 스크롤 가능한 높이 설정 */
+    overflow-y: scroll; /* 세로 스크롤바 설정 */
+}
+
+/* ( 크롬, 사파리, 오페라, 엣지 ) 동작 : 스크롤바 숨기기 */
+.login-wrapper::-webkit-scrollbar { 
+    display: none;
+}
+
+.loginlogo {
+    margin-bottom: 30px;
+    padding-top: 56px;
+}
+
+.login-header h1 {
+    font-size: 24px;
+    font-weight: 700;
+    letter-spacing: -0.023em;
+    line-height: 32px;
+    text-align: center;
+}
+
+.login-header h2 {
+    color: #888;
+    font-weight: 400;
+    text-align: center;
+    letter-spacing: 0.0145em;
+    font-size: 14px;
+    line-height: 20px;
+    margin-bottom: 45px;
+}
+
+.email-label {
+    margin: 17px 0px 7px 0px;
+    text-align: left;
+}
+
+.email-label label {
+    color: #888;
+    font-weight: 600;
+    letter-spacing: 0.0145em;
+    font-size: 14px;
+    line-height: 20px;
+}
+
+.email-input-success {
+    box-sizing: border-box;
+    width: 100%;
+    height: 50px;
+    min-height: 50px;
+    padding: 0px 12px;
+    outline: none;
+    background-color: transparent;
+    border: 1px solid #e1e2e3;
+    color: #333;
+    border-radius: 5px;
+    font-size: 16px;
+    font-weight: 400;
+    margin-bottom: 8px;
+}
+
+/*선택자: id와 classname을 혼합*/
+.email-input-error { 
+    box-sizing: border-box;
+    width: 100%;
+    height: 50px;
+    min-height: 50px;
+    padding: 0px 12px;
+    outline: none;
+    background-color: transparent;
+    border: 1px solid #fe415c;
+    color: #333;
+    border-radius: 5px;
+    font-size: 16px;
+    font-weight: 400;
+    margin-bottom: 8px;
+}
+
+#email:focus {
+    border: 1px solid #36f;
+}
+
+.email.success {
+    display: none;
+}
+
+/*이메일 형식이 틀렸을때*/
+.email.error{
+    color: #fe415c;
+    font-weight: 400;
+    text-align: left;
+    letter-spacing: 0.0192em;
+    font-size: 13px;
+    line-height: 18px;
+    margin-bottom: 8px;
+    margin-top: 0px;
+}
+
+.confirm-button {
+    color: #ccc;
+    background-color: #f2f4f7;
+    border: none;
+    width: 100%;
+    height: 50px;
+    min-height: 50px;
+    border-radius: 25px;
+    font-size: 16px;
+    margin-bottom: 10px;
+    margin-top: 30px;
+}
+
+.confirm-button.success {
+    color: white;
+    background-color: #36f;
+    border: none;
+    width: 100%;
+    height: 50px;
+    min-height: 50px;
+    border-radius: 25px;
+    font-size: 16px;
+    margin-bottom: 10px;
+    cursor: pointer;
+    margin-top: 30px;
+}
+
+.or {
+    color: #939393;
+    font-weight: 600;
+    text-align: center;
+    letter-spacing: 0.025em;
+    font-size: 12px;
+    line-height: 16px;
+    margin-top: 5px;
+    margin-bottom: 15px;
+}
+
+.social-login-wrapper {
+    display: flex;
+    flex-direction: row;
+    margin: 0 auto;
+    max-width: 360px;
+    justify-content: center;
+}
+
+.social-login {
+    display: flex;
+    flex: 1;
+    max-width: 25%;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    border: none;
+    background: none;
+    cursor: pointer;
+    padding: 0px;
+}
+
+.find-email-button {
+    margin-bottom: 0;
+    background-color: transparent;
+    border: none;
+    width: 100%;
+    cursor: pointer;
+    color: #767676;
+    font-weight: 600;
+    text-align: center;
+    letter-spacing: 0.0145em;
+    font-size: 14px;
+    line-height: 20px;
+    margin-top: 30px;
+}
+
+.additional-info-hr {
+    width: 100%;
+    border: none;
+    /*height가 있을때만 border-top과 bottom구분이 유의미*/
+    border-top: 1px solid #e1e2e3;
+    margin-top: 30px;
+    margin-bottom: 30px;
+}
+
+.additional-info-wrapper{
+    margin: 30px auto 15px;
+    display: flex;
+    justify-content: center;
+}
+
+.terms-of-service {
+    margin-right: 12px;
+    background-color: transparent;
+    border: none;
+    color: #767676;
+    font-weight: 600;
+    text-align: center;
+    letter-spacing: 0.0192em;
+    font-size: 13px;
+    line-height: 18px;
+}
+
+.privacy-policy {
+    background-color: transparent;
+    border: none;
+    font-weight: 900;
+    color: #767676;
+    text-align: center;
+    letter-spacing: 0.0192em; /*글자 사이의 간격은 letter-spacing으로, 단어 사이의 간격은 word-spacing으로 */
+    font-size: 13px;
+    line-height: 18px;
+}
+
+.language-select-box {
+    width: 140px;
+    position: relative;
+    border-radius: 5px;
+    border: 1px solid #e1e2e3;
+    background-color: #fff;
+    margin: 10px auto;
+    height: 34px;
+    min-height: 34px;
+}
+.flag-mark {
+    position: absolute;
+    left: 15px;
+    top: 9px;
+    border-radius: 2px;
+    z-index: 1;
+}
+
+.lang{
+    padding-left: 45px;
+    font-size: 13px;
+    font-weight: 600;
+    width: 100%;
+    position: absolute;
+    left: 0;
+    height: 100%;
+    border: none;
+    background: none;
+    z-index: 1;
+    font-size: 16px;
+    color: #333;
+}
+
+.Wantedlab {
+    color: #888;
+    font-weight: 400;
+    text-align: center;
+    letter-spacing: 0.025em;
+    font-size: 12px;
+    line-height: 16px;
+    margin-bottom: 30px;
+}
