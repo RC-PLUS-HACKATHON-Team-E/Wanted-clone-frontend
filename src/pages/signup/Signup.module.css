@@ -1,0 +1,344 @@
+* {
+    font-family: Pretendard, 'Pretendard JP', 'Pretendard Std', -apple-system, system-ui, BlinkMacSystemFont, Roboto, 'Segoe UI', Helvetica, Arial, 'Apple SD Gothic Neo', 'Malgun Gothic', 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', sans-serif;
+}
+
+.login-background {
+    width: 100%;
+    height: 100%;
+    background: #f7f7f7;
+    position: fixed;
+    /*loginwrapper를 웹페이지 상에서 가운데 정렬*/
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.signup-wrapper {
+    position: relative;
+    margin-top: 35px;
+    background-color: white;
+    border: 1px solid rgb(213, 213, 213);
+    border-radius: 10px;
+    padding: 20px;
+    margin-top: 1.5%;
+    width: 400px;
+    height: 600px; /* 스크롤 가능한 높이 설정 */
+    max-height: 600px;
+    overflow-y: scroll; /* 세로 스크롤바 설정 */
+}
+
+/* ( 크롬, 사파리, 오페라, 엣지 ) 동작 : 스크롤바 숨기기 */
+.signup-wrapper::-webkit-scrollbar {
+    display: none;
+}
+
+.signup-header {
+    height: 64px;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.sigunup-header-side {
+    width: 30%;
+    height: 100%;
+}
+
+.signup-title {
+    color: #000;
+    font-weight: 600;
+    text-align: center;
+    letter-spacing: 0em;
+    font-size: 17px;
+    line-height: 24px;
+}
+
+.signup-cancel-btn {
+    width: 100%;
+    height: 100%;
+    background-color: transparent;
+    border: none;
+    text-align: start;
+    cursor: pointer;
+    color: #000;
+    letter-spacing: 0em;
+    line-height: 24px;
+    min-width: 64px;
+    font-weight: 400;
+    font-size: 17px;
+}
+
+.email-label,
+.phone-label,
+.name-label,
+.password-label {
+    margin: 17px 0px 7px 0px;
+    text-align: left;
+}
+
+.email-label label,
+.phone-label label,
+.name-label label,
+.password-label label {
+    color: #888;
+    font-weight: 600;
+    letter-spacing: 0.0145em;
+    font-size: 14px;
+    line-height: 20px;
+}
+
+.email-input-block,
+.verification-code-input-block {
+    box-sizing: border-box;
+    width: 100%;
+    height: 50px;
+    min-height: 50px;
+    padding: 0px 12px;
+    outline: none;
+    background-color: #f2f4f7;
+    border: 1px solid #e1e2e3;
+    color: #333;
+    border-radius: 5px;
+    font-size: 16px;
+    font-weight: 400;
+    margin-bottom: 8px;
+}
+
+.email-input-block {
+    color:#ccc ;
+}
+
+.name-input-block,
+.verification-code-input-block.success,
+.password-input-block.success,
+.passwordConfirm-input-block.success {
+    box-sizing: border-box;
+    width: 100%;
+    height: 50px;
+    min-height: 50px;
+    padding: 0px 12px;
+    outline: none;
+    background-color: transparent;
+    border: 1px solid #e1e2e3;
+    color: #333;
+    border-radius: 5px;
+    font-size: 16px;
+    font-weight: 400;
+    margin-bottom: 8px;
+}
+
+.password-input-block.error,
+.passwordConfirm-input-block.error {
+    box-sizing: border-box;
+    width: 100%;
+    height: 50px;
+    min-height: 50px;
+    padding: 0px 12px;
+    outline: none;
+    background-color: transparent;
+    border: 1px solid #fe415c;
+    color: #333;
+    border-radius: 5px;
+    font-size: 16px;
+    font-weight: 400;
+    margin-bottom: 8px;
+}
+
+.passwordConfirm.error,
+.password.error {
+    color: #fe415c;
+    font-weight: 400;
+    text-align: left;
+    letter-spacing: 0.0192em;
+    font-size: 13px;
+    line-height: 18px;
+    margin-bottom: 8px;
+    margin-top: 0px;
+}
+
+.passwordConfirm.success,
+.password.success {
+    display: none;
+}
+
+.country-select-box {
+    height: 50px;
+    min-height: 50px;
+    border-radius: 5px;
+    box-sizing: border-box;
+    width: 100%;
+    border: 1px solid #e1e2e3;
+    background-color: #fff;
+    margin: 10px auto;
+    position: relative;
+}
+
+.country-select {
+    padding-left: 12px;
+    width: 100%;
+    position: absolute;
+    left: 0;
+    height: 100%;
+    border: none;
+    background: none;
+    z-index: 1;
+    font-size: 16px;
+    color: #333;
+    font-weight: 400;
+}
+
+.phone-input-wrapper {
+    display: flex;
+    flex-direction: row;
+    position: relative;
+}
+
+.phone-input-block {
+    width: 100%;
+    height: 50px;
+    min-height: 50px;
+    padding: 0px 12px;
+    outline: none;
+    background-color: transparent;
+    border: 1px solid #e1e2e3;
+    color: #333;
+    border-radius: 5px;
+    font-size: 16px;
+    font-weight: 400;
+    margin-bottom: 8px;
+}
+
+.verification-btn {
+    border: 1px solid #f2f4f7;
+    color: #ccc;
+    background-color: #f2f4f7;
+    cursor: default;
+    height: 50px;
+    min-height: 50px;
+    font-size: 16px;
+    margin-bottom: 10px;
+    margin-left: 10px;
+    padding: 0px 15px;
+    width: auto;
+    flex: 0 0 auto;
+    border-radius: 5px;
+}
+
+.verification-btn.success {
+    border: 1px solid #e1e2e3;
+    color: #36f;
+    background-color: #ffffff;
+    cursor: default;
+    height: 50px;
+    min-height: 50px;
+    font-size: 16px;
+    margin-bottom: 10px;
+    margin-left: 10px;
+    padding: 0px 15px;
+    width: auto;
+    flex: 0 0 auto;
+    border-radius: 5px;
+}
+
+
+.join-now-button {
+    color: #ccc;
+    background-color: #f2f4f7;
+    border: none;
+    width: 100%;
+    height: 50px;
+    min-height: 50px;
+    border-radius: 25px;
+    font-size: 16px;
+    margin-bottom: 10px;
+    margin-top: 30px;
+}
+
+.join-now-button.success {
+    color: white;
+    background-color: #2658f6;
+    border: none;
+    width: 100%;
+    height: 50px;
+    min-height: 50px;
+    border-radius: 25px;
+    font-size: 16px;
+    margin-bottom: 10px;
+    margin-top: 30px;
+    cursor: pointer;
+}
+
+.password-validation-text {
+    color: #888;
+    font-weight: 400;
+    text-align: left;
+    letter-spacing: 0.0192em;
+    font-size: 13px;
+    line-height: 18px;
+    margin-bottom: 10px;
+    margin-top: 0px;
+}
+
+.terms-hr {
+    border-top: none;
+    border-right: none;
+    border-left: none;
+    border-image: initial;
+    width: 100%;
+    border-bottom: 1px solid #e1e2e3;
+}
+
+.Terms-checkbox {
+    text-align: start;
+    min-height: 25px;
+    width: 100%;
+    margin: 10px 0px;
+}
+
+.Terms-checkbox1 {
+    text-align: start;
+    min-height: 25px;
+    width: 100%;
+    margin: 28px 0px 10px;
+}
+
+.notification-checkbox-group {
+    margin-top: 5%;
+    display: flex;
+}
+
+.checkbox-container {
+    cursor: pointer;
+    margin-left: 5px;
+}
+
+.checkbox-container2 {
+    height: 22px;
+    display: flex;
+    -webkit-box-pack: center;
+    justify-content: center;
+    -webkit-box-align: center;
+    align-items: center;
+    margin: 0 auto;
+    cursor: pointer;
+}
+
+.Terms-checkbox1, .Terms-checkbox, .notification-checkbox-group {
+    color: #888;
+    font-weight: 500;
+    letter-spacing: 0.0096em;
+    font-size: 15px;
+    line-height: 22px;
+}
+
+.blue-check {
+    margin-right: 7px;
+    user-select: none;
+    width: 1em;
+    height: 1em;
+    display: inline-block;
+    flex-shrink: 0;
+    font-size: inherit;
+}
