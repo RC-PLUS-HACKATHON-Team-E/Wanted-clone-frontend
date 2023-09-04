@@ -1,5 +1,5 @@
 import {createGlobalStyle} from 'styled-components'
-
+import '../styles/fonts/pretendard-subset.css';
 export const supportDeviceSize = 768
 
 export const GlobalStyle = createGlobalStyle`

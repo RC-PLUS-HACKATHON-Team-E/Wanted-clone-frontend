@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+// import './fonts/Pretendard-subset.css';
 export const ApplyContainer = styled.div`
   display: flex;
   flex-direction: column;
@@ -29,6 +30,7 @@ export const TitleLabel = styled.h3`
   display: block;
   margin: 0;
   padding: 0;
+  font-family: Pretendard;
 `;
 
 export const ContentBox = styled.ul`
