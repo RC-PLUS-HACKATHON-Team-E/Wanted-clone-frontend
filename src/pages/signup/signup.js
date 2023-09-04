@@ -17,14 +17,20 @@ function Signup(props) {
     let [isPwValid, setIsPwValid] = useState(true);
     let [isPnValid, setIsPnValid] = useState(false);
     let [passwordMatch, setpasswordMatch] = useState(true);
+    let [receivedAuth, setReceivedAuth] = useState(false);
 
     const handlePhoneChange = (e) => {
         setPhone(e.target.value);
+        setReceivedAuth(false);
         validatePhonenum(e.target.value);
     };
 
     const handleVerificationCodeChange = (e) => {
         setVerificationCode(e.target.value);
+
+        if (e.target.value === '1234') {
+            setIsCodeValid(true);
+        }
     };
 
     const handleCountryChange = (e) => {
@@ -35,10 +41,8 @@ function Signup(props) {
         setName(e.target.value);
     };
 
-    const handleSendVerificationCode = (verificationCode) => {
-        if (verificationCode === '1234') {
-            setIsCodeValid(true);
-        }
+    const handleSendVerificationCode = () => {
+        setReceivedAuth(true);
     };
 
     const handlePasswordChange = (e) => {
@@ -129,7 +133,7 @@ function Signup(props) {
             isPrivacyChecked &&
             passwordMatch &&
             name &&
-            isCodeValid;
+            verificationCode;
 
         setIsFormValid(Valid);
     }, [isAgeChecked, isTermsChecked, isPrivacyChecked, passwordMatch, name, isCodeValid]);
@@ -137,6 +141,10 @@ function Signup(props) {
     useEffect(() => {
         handleSendVerificationCode(verificationCode);
     }, [verificationCode]);
+
+    useEffect(() => {
+        setReceivedAuth(false);
+    }, []);
 
     return (
         <div className={Styles['login-background']}>
@@ -223,7 +231,6 @@ function Signup(props) {
                                 인증번호 받기
                             </button>
                         </div>
-
                         <input
                             type="text"
                             value={verificationCode}
@@ -233,7 +240,9 @@ function Signup(props) {
                             className={`${Styles['verification-code-input-block']} ${isFormValid ? Styles['success'] : ''}`}
                             onChange={handleVerificationCodeChange}
                         ></input>
-
+                        <div className={`${receivedAuth ? Styles['receivedAuth-success'] : Styles['receivedAuth-error']}`}>
+                            전송완료
+                        </div>
                         <div className={Styles['password-label']}>
                             <label htmlFor="password">비밀번호</label>
                         </div>
