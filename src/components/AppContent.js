@@ -1,12 +1,13 @@
 import React, {Suspense} from 'react'
 import {Navigate, Route, Routes} from 'react-router-dom'
 import routes from '../routes'
+import { Content } from './ContentStyles';
 
 const loading = <div>화면을 불러오는 중 입니다.</div>
 
 const AppContent = () => {
   return (
-    <div>
+    <Content>
       <Suspense fallback={loading}>
         <Routes>
           {routes.map((route, idx) => {
@@ -19,7 +20,7 @@ const AppContent = () => {
           <Route path='/' element={<Navigate to='home' replace />} />
         </Routes>
       </Suspense>
-    </div>
+    </Content>
   )
 }
 
