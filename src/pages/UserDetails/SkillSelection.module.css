@@ -29,7 +29,7 @@
     border-radius: 10px;
     width: 400px;
     margin-top: 1.5%;
-    height: 600px;
+    height: 300px;
     /* 스크롤 가능한 높이 설정 */
     overflow-y: scroll;
     /* 세로 스크롤바 설정 */
@@ -87,6 +87,7 @@
     height: 23px;
     line-height: 1em;
     border-radius: 50%;
+    font-size: 14px;
     font-style: normal;
     background: #f2f4f7;
     color: #ccc;
@@ -97,7 +98,6 @@
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    vertical-align: middle;
     width: 23px;
     height: 23px;
     line-height: 1em;
@@ -118,9 +118,9 @@
 }
 
 .text-num {
+    font-size: 14px;
     font-weight: 700;
     border: 1px solid transparent;
-    height: 16px;
 }
 
 .header-text {
