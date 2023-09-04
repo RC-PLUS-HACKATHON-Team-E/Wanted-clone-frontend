@@ -14,21 +14,26 @@ export const TitleLabel = styled.h2`
 
 export const SubWrap = styled.div`
   display: block;
-  margin: 4rem 0 3rem;
 `;
 
 export const SubTitle = styled.h6`
-  color: #999;
+  width: auto;
+  line-height: 1.4;
+  color: #333;
   font-size: 1.4rem;
   font-weight: 600;
   margin: 0;
   display: inline-flex;
+  font-family: Pretendard;
 `;
 
 export const SubContent = styled.span`
+  font-size: 1.4rem;
+  justify-content: center;
   display: inline-block;
   padding: 0 1rem;
   position: relative;
+  font-family: Pretendard;
   white-space: nowrap;
   margin-left: 1rem;
   color: #999;
@@ -37,7 +42,7 @@ export const SubContent = styled.span`
     display: block;
     width: 1rem;
     height: 1.2rem;
-    background: #e1e2e3;
+    background: white;
     position: absolute;
     top: 0.4rem;
     left: 0;

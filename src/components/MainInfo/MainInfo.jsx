@@ -16,14 +16,14 @@ function MainInfo() {
       </M.SubWrap>
       <M.AddWrap>
         <M.AddBox>
-          <M.AddList href="/tag_search?tag=%25EC%2597%25B0%25EB%25B4%2589%25EC%2597%2585%25EA%25B3%2584%25ED%258F%2589%25EA%25B7%25A0%25EC%259D%25B4%25EC%2583%2581">
-            #연봉업계평균이상</M.AddList>
-          <M.AddList href="/tag_search?tag=%25EC%2597%25B0%25EB%25B4%2589%25EC%2597%2585%25EA%25B3%2584%25ED%258F%2589%25EA%25B7%25A0%25EC%259D%25B4%25EC%2583%2581">
-            #연봉업계평균이상</M.AddList>
-          <M.AddList href="/tag_search?tag=%25EC%2597%25B0%25EB%25B4%2589%25EC%2597%2585%25EA%25B3%2584%25ED%258F%2589%25EA%25B7%25A0%25EC%259D%25B4%25EC%2583%2581">
-            #연봉업계평균이상</M.AddList>
-          <M.AddList href="/tag_search?tag=%25EC%2597%25B0%25EB%25B4%2589%25EC%2597%2585%25EA%25B3%2584%25ED%258F%2589%25EA%25B7%25A0%25EC%259D%25B4%25EC%2583%2581">
-            #연봉업계평균이상</M.AddList>
+          {/*<M.AddList href="/tag_search?tag=%25EC%2597%25B0%25EB%25B4%2589%25EC%2597%2585%25EA%25B3%2584%25ED%258F%2589%25EA%25B7%25A0%25EC%259D%25B4%25EC%2583%2581">*/}
+          {/*  #연봉업계평균이상</M.AddList>*/}
+          {/*<M.AddList href="/tag_search?tag=%25EC%2597%25B0%25EB%25B4%2589%25EC%2597%2585%25EA%25B3%2584%25ED%258F%2589%25EA%25B7%25A0%25EC%259D%25B4%25EC%2583%2581">*/}
+          {/*  #연봉업계평균이상</M.AddList>*/}
+          {/*<M.AddList href="/tag_search?tag=%25EC%2597%25B0%25EB%25B4%2589%25EC%2597%2585%25EA%25B3%2584%25ED%258F%2589%25EA%25B7%25A0%25EC%259D%25B4%25EC%2583%2581">*/}
+          {/*  #연봉업계평균이상</M.AddList>*/}
+          {/*<M.AddList href="/tag_search?tag=%25EC%2597%25B0%25EB%25B4%2589%25EC%2597%2585%25EA%25B3%2584%25ED%258F%2589%25EA%25B7%25A0%25EC%259D%25B4%25EC%2583%2581">*/}
+          {/*  #연봉업계평균이상</M.AddList>*/}
         </M.AddBox>
       </M.AddWrap>
     </M.MainContainer>
