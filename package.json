@@ -1,0 +1,70 @@
+{
+  "name": "neordinary-template-react-js-web",
+  "description": "너디너리-템플릿-리액트-자바스크립트-웹",
+  "version": "1.5.3",
+  "homepage": ".",
+  "repository": {
+    "type": "git",
+    "url": "git@gitlab.com:softsquared/tech-department/outsource/template-outsource/neordinary-template-react-js-web.git"
+  },
+  "license": "Only use for softsquared project",
+  "author": "(주)소프트스퀘어드",
+  "scripts": {
+    "build-dev": "BUILD_PATH='./build-dev' dotenv -e .env.development react-scripts build",
+    "build-stage": "BUILD_PATH='./build-stage' dotenv -e .env.stage react-scripts build",
+    "build-prod": "react-scripts build",
+    "start": "react-scripts start",
+    "prepare": "husky install"
+  },
+  "dependencies": {
+    "@reduxjs/toolkit": "^1.9.5",
+    "@testing-library/user-event": "^14.4.3",
+    "axios": "^0.26.1",
+    "dotenv-cli": "^5.1.0",
+    "react": "^17.0.2",
+    "react-app-polyfill": "^3.0.0",
+    "react-dom": "^17.0.2",
+    "react-redux": "^7.2.6",
+    "react-responsive-carousel": "^3.2.23",
+    "react-router-dom": "^6.2.2",
+    "redux": "4.1.2",
+    "simplebar-react": "^2.4.1",
+    "styled-components": "^5.3.11"
+  },
+  "devDependencies": {
+    "@typescript-eslint/eslint-plugin": "^5.36.2",
+    "@typescript-eslint/parser": "^5.36.2",
+    "eslint": "^8.23.1",
+    "eslint-config-prettier": "^8.5.0",
+    "eslint-import-resolver-typescript": "^3.5.1",
+    "eslint-plugin-prettier": "^4.2.1",
+    "husky": "^8.0.1",
+    "lint-staged": "^13.0.3",
+    "prettier": "^2.7.1",
+    "react-scripts": "5.0.0",
+    "redux-devtools-extension": "^2.13.9",
+    "typescript": "^4.8.3"
+  },
+  "engines": {
+    "node": ">=10",
+    "npm": ">=6"
+  },
+  "lint-staged": {
+    "src/**/*.{js,jsx,ts,tsx,json,css,html}": [
+      "prettier --write .",
+      "eslint --fix --max-warnings 0 src/"
+    ]
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
+  }
+}
