@@ -17,10 +17,12 @@ const Tagsetup = React.lazy(() => import('./pages/UserDetails/tagsetup')); // Ta
 
 const App = () => {
   let navigate = useNavigate();
-  
+
   return (
       <Suspense fallback={loading}>
         <Routes>
+          <Route path='/' element={<DefaultLayout />}>
+            <Route index element={<Login navigate={navigate} />} />
           <Route path='/login/email' element={<Login navigate={navigate} />} />
           <Route path='/login/password' element={<PasswordInput navigate={navigate} />} />
           <Route path='/signup' element={<Signup navigate={navigate} />} />
@@ -29,7 +31,7 @@ const App = () => {
           <Route path='/tagsetup' element={<Tagsetup navigate={navigate}/>} />
           <Route exact path='/404' name='Page 404' element={<Page404 />} />
           <Route exact path='/500' name='Page 500' element={<Page500 />} />
-          <Route exact path='/*' name='Home' element={<DefaultLayout />} />
+          </Route>
         </Routes>
       </Suspense>
   );
