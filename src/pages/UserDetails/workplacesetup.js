@@ -2,8 +2,10 @@ import React, { useEffect, useState } from "react";
 import { ReactComponent as Gradualchange } from '../../assets/gradualchange.svg';
 import { ReactComponent as Wantedlogo } from '../../assets/wantedlogo.svg';
 import styles from './Workplacesetup.module.css';
+import { useNavigate } from "react-router-dom";
 
 function Workplacesetup(props) {
+    let navigate = useNavigate();
     const [isFormValid, setIsFormValid] = useState(false);
     const [selectedSchool, setSelectedSchool] = useState('');
     const [selectedWorkplace, setSelectedWorkplace] = useState('');
@@ -19,7 +21,7 @@ function Workplacesetup(props) {
     const handleworkplaceSubmit = (e) => {
         e.preventDefault();
         if (isFormValid) {
-            props.navigate('/tagsetup');
+            navigate('/tagsetup');
         }
     };
 

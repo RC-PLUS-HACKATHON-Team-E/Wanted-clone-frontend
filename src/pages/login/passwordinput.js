@@ -2,12 +2,14 @@ import { useContext, useEffect, useState } from "react";
 import Styles from './PasswordInput.module.css'; // CSS 모듈 import
 import { useDispatch, useSelector } from 'react-redux';
 import { login, logout, updateuser } from '../../store/actions/login';
+import { useNavigate } from "react-router-dom";
 
 function PasswordInput(props) {
   let [Password, setPassword] = useState('');
   let [PwIsValid, setPwIsValid] = useState(true);
   let auth = useSelector((state) => state.auth);
   let dispatch = useDispatch();
+  let navigate = useNavigate();
 
   const handlePwChange = (e) => {
     const inputPassword = e.target.value;
@@ -22,7 +24,7 @@ function PasswordInput(props) {
       dispatch(login());
       dispatch(updateuser('kim'));
       console.log(auth);
-      props.navigate('/');
+      navigate('/');
       setPwIsValid(true);
     } else {
       dispatch(logout());
@@ -35,7 +37,7 @@ function PasswordInput(props) {
       <div className={Styles['pwinput-wrapper']}>
         <div className={Styles['pwinput-header']}>
           <div className={Styles['pwinput-header-side']}>
-            <button type="button" className={Styles['pwinput-cancel-btn']} onClick={() => { props.navigate('/login/email'); }}>
+            <button type="button" className={Styles['pwinput-cancel-btn']} onClick={() => { navigate('/login/email'); }}>
               <svg viewBox="0 0 18 18" className={Styles['back-btn']}><path d="m6.045 9 5.978-5.977a.563.563 0 1 0-.796-.796L4.852 8.602a.562.562 0 0 0 0 .796l6.375 6.375a.563.563 0 0 0 .796-.796L6.045 9z"></path></svg>
             </button>
           </div>
@@ -71,7 +73,7 @@ function PasswordInput(props) {
             <button
               type="button"
               className={Styles['pw-reset-btn']}
-              onClick={() => { props.navigate('/pw-reset') }}>
+              onClick={() => { navigate('/pw-reset') }}>
               <span className={Styles['pw-reset']}>
                 비밀번호 초기화/변경
               </span>

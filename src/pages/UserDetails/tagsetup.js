@@ -2,8 +2,10 @@ import React, { useState } from "react";
 import { ReactComponent as Gradualchange } from '../../assets/gradualchange.svg';
 import { ReactComponent as Wantedlogo } from '../../assets/wantedlogo.svg';
 import styles from './Tagsetup.module.css';
+import { useNavigate } from "react-router-dom";
 
 function Tagsetup(props) {
+    let navigate = useNavigate();
     const [selectedEmpathy, setSelectedEmpathy] = useState([]);
     const [selectedInterest, setSelectedInterest] = useState([]);
     const [selectedTrend, setSelectedTrend] = useState([]);
@@ -23,7 +25,7 @@ function Tagsetup(props) {
     const handletagSubmit = (e) => {
         e.preventDefault();
         // 회원가입 처리 로직 추가
-        props.navigate('/');
+        navigate('/');
     };
 
     return (

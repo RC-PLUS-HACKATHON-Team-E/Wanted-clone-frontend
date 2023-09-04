@@ -3,6 +3,7 @@ import { ReactComponent as Bluecheck } from "../../assets/bluecheck.svg";
 import { ReactComponent as Gradualchange } from '../../assets/gradualchange.svg';
 import { ReactComponent as Wantedlogo } from '../../assets/wantedlogo.svg';
 import Styles from './Signup.module.css'; // CSS 모듈을 import
+import { useNavigate } from "react-router-dom";
 
 function Signup(props) {
     let [email, setEmail] = useState('abc@naver.com');
@@ -18,6 +19,8 @@ function Signup(props) {
     let [isPnValid, setIsPnValid] = useState(false);
     let [passwordMatch, setpasswordMatch] = useState(true);
     let [receivedAuth, setReceivedAuth] = useState(false);
+
+    let navigate = useNavigate();
 
     const handlePhoneChange = (e) => {
         setPhone(e.target.value);
@@ -73,7 +76,7 @@ function Signup(props) {
     const handleSignupSubmit = (e) => {
         e.preventDefault();
         if (isFormValid) {
-            props.navigate('/skillselect');
+            navigate('/skillselect');
         }
     };
 
@@ -160,7 +163,7 @@ function Signup(props) {
                             className={Styles['signup-cancel-btn']}
                             onClick={() => {
                                 if (window.confirm('회원가입을 취소하고 이전 화면으로 되돌아갑니다. 계속하시겠어요?')) {
-                                    props.navigate('/login');
+                                    navigate('/login');
                                 }
                             }}
                         >

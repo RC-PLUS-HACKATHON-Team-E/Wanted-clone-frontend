@@ -2,8 +2,10 @@ import React, { useEffect, useState } from "react";
 import { ReactComponent as Gradualchange } from '../../assets/gradualchange.svg';
 import { ReactComponent as Wantedlogo } from '../../assets/wantedlogo.svg';
 import styles from './SkillSelection.module.css';
+import { useNavigate } from "react-router-dom";
 
 function SkillSelection(props) {
+    let navigate = useNavigate();
     const [isFormValid, setIsFormValid] = useState(false);
     const [selectedJob, setSelectedJob] = useState('');
     const [selectedExperience, setSelectedExperience] = useState('');
@@ -37,7 +39,7 @@ function SkillSelection(props) {
         e.preventDefault();
         //회원가입 처리 로직 추가
         if (isFormValid) {
-            props.navigate('/workplacesetup');
+            navigate('/workplacesetup');
         }
     };
 
