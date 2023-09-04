@@ -4,12 +4,14 @@ import { ReactComponent as Google } from "../../assets/google.svg";
 import { ReactComponent as Apple } from '../../assets/apple.svg';
 import { ReactComponent as Kakao } from '../../assets/kakao.svg';
 import Styles from './Login.module.css'; // CSS 모듈 import
+import { useNavigate } from "react-router-dom";
 
 function Login(props) {
   let [email, setEmail] = useState('');
   let [selectedLanguage, setSelectedLanguage] = useState('ko');
   let flagImageSrc = '';
   let [emailIsValid, setEmailIsValid] = useState();
+  let navigate = useNavigate();
 
   if (selectedLanguage === 'ko') {
     flagImageSrc = 'https://static.wanted.co.kr/images/wantedoneid/ico_KR.svg';
@@ -34,9 +36,9 @@ function Login(props) {
 
   const handleEmailCheck = (e) => {
     if (email === 'abc@gmail.com') {
-      props.navigate('/login/password');
+      navigate('/login/password');
     } else {
-      props.navigate('/signup');
+      navigate('/signup');
     }
   };
 
