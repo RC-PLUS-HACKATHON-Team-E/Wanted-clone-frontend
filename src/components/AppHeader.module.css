@@ -1,4 +1,4 @@
-/* Import FontAwesome , ÆùÆ® ½ºÅ¸ÀÏ */
+/* Import FontAwesome , ï¿½ï¿½Æ® ï¿½ï¿½Å¸ï¿½ï¿½ */
 @import url('//use.fontawesome.com/releases/v4.7.0/css/font-awesome-css.min.css');
 
 /* Apply FontAwesome to all text */
@@ -11,6 +11,7 @@
 }
 
 .App-header {
+  width: 100%;
   padding: 0 20px;
   border-bottom: 1px solid #ccc;
 }
@@ -18,7 +19,7 @@
 body, head {
     margin: 0;
 }
-  
+
 
 .mainbar,
 .mainbar2-2,
@@ -59,14 +60,17 @@ body, head {
 }
 
 .navbar-item {
-  color: rgb(0, 0, 0);
+  font-size: 1.4rem;
+  line-height: 2rem;
+  font-weight: 600;
+  color: #333333;
   margin-right: 20px;
   cursor: pointer;
   transition: 0.3s;
-  border-bottom: 2px solid transparent;
-  padding-bottom: 20px;
-  
+  border-bottom: 0.2rem solid transparent;
+  padding-bottom: 2rem;
 }
+
 
 .navbar-item:hover {
   border-color: #000000;
@@ -173,7 +177,7 @@ body, head {
 
 .vertical-line {
   color: #8d8d8d;
-  /* ¿øÇÏ´Â »ö»óÀ¸·Î º¯°æÇÏ¼¼¿ä. */
+  /* ï¿½ï¿½ï¿½Ï´ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ï¼ï¿½ï¿½ï¿½. */
 }
 
 /* .login-button:hover,
@@ -191,7 +195,7 @@ body, head {
   }
 }
 
-/* È­¸é ³Êºñ°¡ 768px ÀÌ»óÀÏ ¶§ */
+/* È­ï¿½ï¿½ ï¿½Êºï¿½ 768px ï¿½Ì»ï¿½ï¿½ï¿½ ï¿½ï¿½ */
 @media (min-width: 990px) {
   .mainbar2-1 {
     display: none;

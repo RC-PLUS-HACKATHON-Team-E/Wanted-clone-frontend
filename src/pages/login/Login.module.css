@@ -1,5 +1,5 @@
 .login-background {
-    width: 100%;
+    width: inherit;
     height: 100%;
     background: #f7f7f7;
     position: fixed;
@@ -21,7 +21,7 @@
 }
 
 /* ( 크롬, 사파리, 오페라, 엣지 ) 동작 : 스크롤바 숨기기 */
-.login-wrapper::-webkit-scrollbar { 
+.login-wrapper::-webkit-scrollbar {
     display: none;
 }
 
@@ -79,7 +79,7 @@
 }
 
 /*선택자: id와 classname을 혼합*/
-.email-input-error { 
+.email-input-error {
     box-sizing: border-box;
     width: 100%;
     height: 50px;

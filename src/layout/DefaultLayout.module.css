@@ -1,11 +1,11 @@
-/* Import FontAwesome , ÆùÆ® ½ºÅ¸ÀÏ */
-@import url('//use.fontawesome.com/releases/v4.7.0/css/font-awesome-css.min.css');
+/*!* Import FontAwesome , ï¿½ï¿½Æ® ï¿½ï¿½Å¸ï¿½ï¿½ *!*/
+/*@import url('//use.fontawesome.com/releases/v4.7.0/css/font-awesome-css.min.css');*/
 
-/* Apply FontAwesome to all text */
-* {
-  font-family: 'FontAwesome', Arial, sans-serif;
-}
+/*!* Apply FontAwesome to all text *!*/
+/** {*/
+/*  font-family: 'FontAwesome', Arial, sans-serif;*/
+/*}*/
 
-.DefaultLayout {
-  text-align: center;
-}
+/*.DefaultLayout {*/
+/*  text-align: center;*/
+/*}*/

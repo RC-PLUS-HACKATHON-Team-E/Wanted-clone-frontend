@@ -1,19 +1,18 @@
 import React from 'react'
 import AppHeader from '../components/AppHeader'
 import AppContent from '../components/AppContent'
-import AppFooter from '../components/AppFooter'
+// import AppFooter from '../components/AppFooter'
+import styled from 'styled-components';
 import {supportDeviceSize} from '../components/styled'
-import Styles from './DefaultLayout.module.css';
-import Navbar from '../components/navbar'
-import {useNavigate, useLocation} from 'react-router-dom';;
+import {useNavigate, useLocation} from 'react-router-dom';
 
 /**
  * 기본 레이아웃
  * @category Layout
  */
 const DefaultLayout = () => {
-  let navigate = useNavigate();
-  let location = useLocation();
+  // let navigate = useNavigate();
+  // let location = useLocation();
   /*const navigate = useNavigate()
 
   // Redux 값 불러오기
@@ -29,16 +28,35 @@ const DefaultLayout = () => {
   }, [])*/
 
   return (
-    <div className="DefaultLayout">
-      {location.pathname === "/login/email"
-        || location.pathname === "/login/password"
-        || location.pathname === "/signup"
-        || location.pathname === "/skillselect"
-        || location.pathname === "/workplacesetup"
-        || location.pathname === "/tagsetup" ? null : <Navbar navigate={navigate}></Navbar>}
-    </div>
+    <Root>
+      <AppHeader />
+      <AppContent />
+      {/*<AppFooter />*/}
+    </Root>
   )
 }
+
+const Root = styled.div`
+  display: flex;
+  flex-direction: column;
+  width: 100vw;
+  height: 100vh;
+  background-color: #fff;
+
+  @media all and (max-width: ${supportDeviceSize}px) {
+    width: 100vw;
+  }
+`
+
+    // <div className="DefaultLayout">
+    //   {location.pathname === "/login/email"
+    //     || location.pathname === "/login/password"
+    //     || location.pathname === "/signup"
+    //     || location.pathname === "/skillselect"
+    //     || location.pathname === "/workplacesetup"
+    //     || location.pathname === "/tagsetup" ? null : <Navbar navigate={navigate}></Navbar>}
+    // </div>
+
 
 
 export default DefaultLayout
