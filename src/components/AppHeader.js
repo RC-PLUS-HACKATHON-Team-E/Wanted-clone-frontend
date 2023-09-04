@@ -5,7 +5,7 @@ import { ReactComponent as Notibtn } from '../assets/notibtn.svg';
 import { Routes, Route, Link, useNavigate, useLocation, Outlet, useParams } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { login, logout, updateuser } from '../store/actions/login';
-import styles from './Navbar.module.css';
+import styles from './AppHeader.module.css';
 
 function AppHeader(props) {
   let location = useLocation();

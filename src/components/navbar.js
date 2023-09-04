@@ -5,7 +5,7 @@
 // import { Routes, Route, Link, useNavigate, useLocation, Outlet, useParams } from 'react-router-dom';
 // import { useDispatch, useSelector } from 'react-redux';
 // import { login, logout, updateuser } from '../store/actions/login';
-// import styles from './Navbar.module.css'; // CSS 모듈을 import합니다.
+// import styles from './AppHeader.module.css'; // CSS 모듈을 import합니다.
 //
 // function Navbar(props) {
 //     let location = useLocation();
