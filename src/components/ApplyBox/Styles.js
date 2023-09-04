@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-// import './fonts/Pretendard-subset.css';
+
 export const ApplyContainer = styled.div`
   display: flex;
   flex-direction: column;
@@ -15,7 +15,6 @@ export const ApplyContainer = styled.div`
 
 export const ContentWrap = styled.div`
   width: 29.84rem;
-  height: 9.165rem;
   display: flex;
   flex-direction: column;
   position: relative; 
@@ -42,38 +41,47 @@ export const ContentBox = styled.ul`
   display: flex;
   flex-direction: row;
   position: relative;
+  font-family: Pretendard;
 `
 
 export const ContextBox = styled.li`
+  margin: 0;
   list-style-type: none;
   width: 50%;
   height: 4.6219rem;
   letter-spacing: normal;
   text-align: left;
+  font-family: Pretendard;
 `
 
-export const ContextLabel = styled.h3`
+export const ContextLabel = styled.h4`
   display: block;
   font-size: 1.4rem;
-  margin-block-start: 1.33em;
-  margin-block-end: 1.33em;
-  margin-inline-start: 0px;
-  margin-inline-end: 0px;
-  font-weight: bold;
-  color: #333;
-  margin-bottom: 8px;
+  font-weight: 600;
+  color: #999;
+  margin: 0 0 0.8rem 0;
   line-height: 1.2;
+  font-family: Pretendard;
+  letter-spacing: inherit;
+  text-align: inherit;
 `;
 
 export const NumberLabel = styled.p`
   display: block;
   font-size: 1.5rem;
-  margin-block-start: 1em;
-  margin-block-end: 1em;
-  margin-inline-start: 0px;
-  margin-inline-end: 0px;
+  margin: 0;
   font-weight: 600;
   color: #333;
+  font-family: Pretendard;
 `;
+
+export const InteractionWrap = styled.div`
+  margin-top: 2.4rem;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: flex-start; 
+`;
+
 
 

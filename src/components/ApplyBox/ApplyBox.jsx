@@ -22,7 +22,9 @@ function ApplyBox() {
       </A.ContentWrap>
       <BookmarkButton label="북마크하기" />
       <ApplyButton label="지원하기" />
-      <InteractionButton label="0" />
+      <A.InteractionWrap>
+        <InteractionButton likeCount="0" />
+      </A.InteractionWrap>
     </A.ApplyContainer>
   );
 }
