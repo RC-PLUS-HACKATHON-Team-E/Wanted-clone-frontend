@@ -61,7 +61,7 @@ function Login(props) {
               <label htmlFor="email">이메일</label>
             </div>
             <input
-              /**label for와 input의 id값 */
+              /*label for와 input의 id값 */
               type="email"
               placeholder="이메일을 입력해주세요"
               name="email"
