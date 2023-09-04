@@ -11,6 +11,9 @@
 }
 
 .App-header {
+  position: fixed;
+  z-index: 999;
+  background-color: #fff;
   width: 100%;
   padding: 0 20px;
   border-bottom: 1px solid #ccc;
@@ -60,15 +63,15 @@ body, head {
 }
 
 .navbar-item {
-  font-size: 1.4rem;
-  line-height: 2rem;
+  font-size: 14px;
+  line-height: 20px;
   font-weight: 600;
   color: #333333;
   margin-right: 20px;
   cursor: pointer;
   transition: 0.3s;
-  border-bottom: 0.2rem solid transparent;
-  padding-bottom: 2rem;
+  border-bottom: 2px solid transparent;
+  padding-bottom: 20px;
 }
 
 

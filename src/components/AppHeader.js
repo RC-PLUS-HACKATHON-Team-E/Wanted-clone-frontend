@@ -11,6 +11,7 @@ function AppHeader(props) {
   let location = useLocation();
   let auth = useSelector((state) => state.auth);
   let dispatch = useDispatch();
+  let navigate = useNavigate();
 
   return (
     <header className={styles['App-header']}>
@@ -20,23 +21,24 @@ function AppHeader(props) {
             <img src="https://image.wanted.co.kr/optimize?src=https%3A%2F%2Fstatic.wanted.co.kr%2Fimages%2Ficon-menu.png&amp;w=17&amp;q=75" alt="hamberger menu" />
           </button>
           <div>
-            <Logo onClick={() => props.navigate('/')} />
+            <Logo onClick={() => navigate('/')} />
           </div>
         </div>
         <div className={styles['mainmenu']}>
           <ul className={styles['navbar-list']}>
-            <li className={`${styles['navbar-item']} ${location.pathname === '/employment' ? styles['active'] : ''}`} onClick={() => props.navigate('/employment')}>채용 이벤트</li>
-            <li className={`${styles['navbar-item']} ${location.pathname === '/resume' ? styles['active'] : ''}`} onClick={() => props.navigate('/resume')}>이력서</li>
-            <li className={`${styles['navbar-item']} ${location.pathname === '/social' ? styles['active'] : ''}`} onClick={() => props.navigate('/social')}>소셜</li>
-            <li className={`${styles['navbar-item']} ${location.pathname === '/freelancer' ? styles['active'] : ''}`} onClick={() => props.navigate('/freelancer')}>프리랜서</li>
-            <li className={`${styles['navbar-item']} ${location.pathname === '/ai-prediction' ? styles['active'] : ''}`} onClick={() => props.navigate('/ai-prediction')}>AI 합격예측</li>
+            <li className={`${styles['navbar-item']} ${location.pathname === '/employment' ? styles['active'] : ''}`} onClick={() => navigate('/employment')}>채용</li>
+            <li className={`${styles['navbar-item']} ${location.pathname === '/event' ? styles['active'] : ''}`} onClick={() => navigate('/event')}>이벤트</li>
+            <li className={`${styles['navbar-item']} ${location.pathname === '/resume' ? styles['active'] : ''}`} onClick={() => navigate('/resume')}>이력서</li>
+            <li className={`${styles['navbar-item']} ${location.pathname === '/social' ? styles['active'] : ''}`} onClick={() => navigate('/social')}>소셜</li>
+            <li className={`${styles['navbar-item']} ${location.pathname === '/freelancer' ? styles['active'] : ''}`} onClick={() => navigate('/freelancer')}>프리랜서</li>
+            <li className={`${styles['navbar-item']} ${location.pathname === '/ai-prediction' ? styles['active'] : ''}`} onClick={() => navigate('/ai-prediction')}>AI 합격예측</li>
           </ul>
         </div>
         <div className={styles['aside']}>
           <ul className={styles['aside-list']}>
             <li className={styles['aside-item']}>
               <button type="button" className={styles['search-button']}>
-                <Search onClick={() => props.navigate('/search')} />
+                <Search onClick={() => navigate('/search')} />
               </button>
             </li>
             {auth.isLoggedIn &&
@@ -54,7 +56,7 @@ function AppHeader(props) {
                 </button>
               </li>
               : <li className={styles['aside-item']}>
-                <button type="button" className={styles['login-button']} onClick={() => props.navigate('/login/email')}>
+                <button type="button" className={styles['login-button']} onClick={() => navigate('/login/email')}>
                   회원가입/로그인
                 </button>
               </li>}
@@ -62,7 +64,7 @@ function AppHeader(props) {
               {/* <span className={styles['vertical-line']}>ㅣ</span> */}
             </li>
             <li className={styles['aside-item']}>
-              <button type="button" className={styles['company-service-button']} onClick={() => props.navigate('/company-service')}>
+              <button type="button" className={styles['company-service-button']} onClick={() => navigate('/company-service')}>
                 기업서비스
               </button>
             </li>
@@ -75,7 +77,7 @@ function AppHeader(props) {
             <img src="https://image.wanted.co.kr/optimize?src=https%3A%2F%2Fstatic.wanted.co.kr%2Fimages%2Ficon-menu.png&amp;w=17&amp;q=75" alt="hamberger menu" />
           </button>
           <div>
-            <Logo onClick={() => props.navigate('/')} />
+            <Logo onClick={() => navigate('/')} />
           </div>
         </div>
         {auth.isLoggedIn ?
@@ -85,7 +87,7 @@ function AppHeader(props) {
             </div>
           </button>
           : <div className={styles['login-button2-container']}>
-            <button type="button" className={styles['login-button2']} onClick={() => props.navigate('/login/email')}>
+            <button type="button" className={styles['login-button2']} onClick={() => navigate('/login/email')}>
               회원가입하기
             </button>
           </div>}
@@ -93,16 +95,17 @@ function AppHeader(props) {
       <div className={styles['mainbar2-2']}>
         <div className={styles['mainmenu']}>
           <ul className={styles['navbar-list']}>
-            <li className={`${styles['navbar-item']} ${location.pathname === '/employment' ? styles['active'] : ''}`} onClick={() => props.navigate('/employment')}>채용 이벤트</li>
-            <li className={`${styles['navbar-item']} ${location.pathname === '/resume' ? styles['active'] : ''}`} onClick={() => props.navigate('/resume')}>이력서</li>
-            <li className={`${styles['navbar-item']} ${location.pathname === '/social' ? styles['active'] : ''}`} onClick={() => props.navigate('/social')}>소셜</li>
-            <li className={`${styles['navbar-item']} ${location.pathname === '/freelancer' ? styles['active'] : ''}`} onClick={() => props.navigate('/freelancer')}>프리랜서</li>
-            <li className={`${styles['navbar-item']} ${location.pathname === '/ai-prediction' ? styles['active'] : ''}`} onClick={() => props.navigate('/ai-prediction')}>AI 합격예측</li>
+            <li className={`${styles['navbar-item']} ${location.pathname === '/employment' ? styles['active'] : ''}`} onClick={() => navigate('/employment')}>채용</li>
+            <li className={`${styles['navbar-item']} ${location.pathname === '/event' ? styles['active'] : ''}`} onClick={() => navigate('/event')}>이벤트</li>
+            <li className={`${styles['navbar-item']} ${location.pathname === '/resume' ? styles['active'] : ''}`} onClick={() => navigate('/resume')}>이력서</li>
+            <li className={`${styles['navbar-item']} ${location.pathname === '/social' ? styles['active'] : ''}`} onClick={() => navigate('/social')}>소셜</li>
+            <li className={`${styles['navbar-item']} ${location.pathname === '/freelancer' ? styles['active'] : ''}`} onClick={() => navigate('/freelancer')}>프리랜서</li>
+            <li className={`${styles['navbar-item']} ${location.pathname === '/ai-prediction' ? styles['active'] : ''}`} onClick={() => navigate('/ai-prediction')}>AI 합격예측</li>
           </ul>
         </div>
         <div>
           <button type="button" className={styles['search-button']}>
-            <Search onClick={() => props.navigate('/search')} />
+            <Search onClick={() => navigate('/search')} />
           </button>
           <button type="button" className={styles['more-button']}>
             <More />
