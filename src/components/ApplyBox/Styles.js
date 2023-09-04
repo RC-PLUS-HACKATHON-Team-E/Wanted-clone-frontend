@@ -8,8 +8,7 @@ export const ApplyContainer = styled.div`
   //margin: 0 0 10px 0;
   background-color: #fff;
   border: 0.1rem solid #e1e2e3; 
-  border-radius: 0.3rem; 
-  cursor: pointer; 
+  border-radius: 0.3rem;
   align-items: center;
 `;
 
@@ -27,6 +26,9 @@ export const TitleLabel = styled.h3`
   letter-spacing: normal;
   text-align: left;
   color: #333;
+  display: block;
+  margin: 0;
+  padding: 0;
 `;
 
 export const ContentBox = styled.ul`

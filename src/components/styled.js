@@ -17,7 +17,7 @@ body {
     background: white;
     margin: 0;
     padding: 0;
-    font-family: -apple-system, sans-serif, Roboto;
+    font-family: 'Pretendard', -apple-system, sans-serif, Roboto;
     display: flex;
     flex-direction: column;
     align-items: center;
