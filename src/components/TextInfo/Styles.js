@@ -12,7 +12,10 @@ export const TextContent = styled.p`
   word-wrap: break-word;
   white-space: pre-wrap;
   font-size: 1.6rem;
-  line-height: 1.75;`;
+  line-height: 1.75;
+  font-family: Pretendard;
+`;
+
 
 //약간 부제목
 export const SubTitleContent = styled.h6`
@@ -25,6 +28,7 @@ export const SubTitleContent = styled.h6`
   margin-block-end: 2.33em;
   margin-inline-start: 0;
   margin-inline-end: 0;
+  font-family: Pretendard;
 `;
 
 
