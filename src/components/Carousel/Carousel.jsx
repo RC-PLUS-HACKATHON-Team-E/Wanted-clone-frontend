@@ -45,7 +45,6 @@ function ImageCarousel() {
 
   return (
     <C.CarouselContainer>
-      <C.Container>
       <Carousel>
         {images.map((image, index) => (
           <div key={index}>
@@ -53,7 +52,6 @@ function ImageCarousel() {
           </div>
         ))}
       </Carousel>
-      </C.Container>
     </C.CarouselContainer>
   );
 }

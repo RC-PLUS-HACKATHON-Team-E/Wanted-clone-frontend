@@ -1,9 +1,7 @@
 import styled from 'styled-components';
 
-export const Container = styled.div`
+export const CarouselContainer = styled.div`
   margin: 0 auto;
+  height: auto;
 `;
 
-export const CarouselContainer = styled.div`
-  margin-top: 2rem;
-`;
