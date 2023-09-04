@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Carousel } from 'react-responsive-carousel';
 import 'react-responsive-carousel/lib/styles/carousel.min.css';
-
+import * as C from './Styles';
 function ImageCarousel() {
 
   const images = [
@@ -44,7 +44,8 @@ function ImageCarousel() {
   // }, []);
 
   return (
-    <div className="carousel-container">
+    <C.CarouselContainer>
+      <C.Container>
       <Carousel>
         {images.map((image, index) => (
           <div key={index}>
@@ -52,8 +53,9 @@ function ImageCarousel() {
           </div>
         ))}
       </Carousel>
-    </div>
+      </C.Container>
+    </C.CarouselContainer>
   );
 }
 
-export default Carousel;
+export default ImageCarousel;
