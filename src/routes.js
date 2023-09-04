@@ -11,6 +11,7 @@ const Signup = React.lazy(() => import('./pages/signup/signup'));
 const SkillSelection = React.lazy(() => import('./pages/UserDetails/skillselection'));
 const Workplacesetup = React.lazy(() => import('./pages/UserDetails/workplacesetup'));
 const Tagsetup = React.lazy(() => import('./pages/UserDetails/tagsetup'));
+const RecruitInfo = React.lazy(() => import('./pages/RecruitInfo/RecruitInfo'));
 
 const routes = [
   {path: '/', name: 'Login', element: Login},
@@ -23,5 +24,6 @@ const routes = [
   {path: '/skillselect', name: 'SkillSelection', element: SkillSelection},
   {path: '/workplacesetup', name: 'Workplacesetup', element: Workplacesetup},
   {path: '/tagsetup', name: 'Tagsetup', element: Tagsetup},
+  {path: '/recruitinfo', name: 'RecruitInfo', element: RecruitInfo}
 ]
 export default routes

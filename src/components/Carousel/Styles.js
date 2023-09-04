@@ -1,10 +1,7 @@
 import styled from 'styled-components';
 
-export const Container = styled.div`
-  max-width: 800px;
+export const CarouselContainer = styled.div`
   margin: 0 auto;
+  height: auto;
 `;
 
-export const CarouselContainer = styled.div`
-  margin-top: 20px;
-`;
