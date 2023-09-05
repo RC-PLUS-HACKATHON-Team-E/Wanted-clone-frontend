@@ -2,7 +2,10 @@
 
 const initialState = {
   isLoggedIn: false,
-  user: null,
+  user: {
+    name: null,
+    password : null,
+  },
   userEmail: null //로그인할때 저장할 유저의 다른정보가 필요없다면 사용안해도됨
 };
 
@@ -12,13 +15,19 @@ export default function authReducer(state = initialState, action) {
       return {
         ...state,
         isLoggedIn: true,
-        user: null,
+        user: {
+          name: action.payload.name,
+          password : action.payload.password,
+        },
       };
     case 'LOGOUT':
       return {
         ...state,
         isLoggedIn: false,
-        user: null,
+        user: {
+          name: null,
+          password : null
+        },
       };
     case 'UPDATE_USER':
       return {

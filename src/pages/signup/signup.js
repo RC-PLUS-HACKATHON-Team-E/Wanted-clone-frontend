@@ -4,7 +4,7 @@ import { ReactComponent as Gradualchange } from '../../assets/gradualchange.svg'
 import { ReactComponent as Wantedlogo } from '../../assets/wantedlogo.svg';
 import Styles from './Signup.module.css'; // CSS 모듈을 import
 import { useDispatch, useSelector } from 'react-redux';
-import { signin } from '../../store/actions/login';
+import { login } from '../../store/actions/login';
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
 
@@ -145,7 +145,8 @@ function Signup(props) {
                 if (isFormValid) {
                     navigate('/skillselect');
                 }
-                console.log('유저데이터',userData);
+                // dispatch(login(userData.name, userData.password));
+                console.log('유저데이터', userData);
                 console.log('유저 데이터 전송 성공:', response);
             }).catch((error) => {
                 console.log('수정정보',userData);

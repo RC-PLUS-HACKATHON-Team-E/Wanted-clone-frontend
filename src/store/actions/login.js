@@ -1,7 +1,8 @@
 //action 설정
 
-export const login = () => ({
+export const login = (name, password) => ({
   type: 'LOGIN',
+  payload: { name, password },
 });
 
 export const logout = () => ({
