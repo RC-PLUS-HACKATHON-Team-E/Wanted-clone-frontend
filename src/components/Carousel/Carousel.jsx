@@ -45,7 +45,7 @@ function ImageCarousel() {
 
   return (
     <C.CarouselContainer>
-      <Carousel>
+      <Carousel showThumbs={false}>
         {images.map((image, index) => (
           <div key={index}>
             <img src={image.url} alt={`Image ${index}`} />

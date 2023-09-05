@@ -31,4 +31,27 @@ export const SubTitleContent = styled.h6`
   font-family: Pretendard;
 `;
 
+export const SkillLabel = styled.h6`
+  color: #333;
+  margin-top: 2rem;
+  margin-bottom: 0;
+  font-weight: 600;
+  font-size: 1.6rem;
+  line-height: 1.75;
+  font-family: Pretendard;
+`;
+
+export const SkillBox = styled.div`
+  display: flex;
+  margin-top: 0.5rem;
+`;
+
+// grid-gap: 10px 8px;
+// gap: 10px 8px;
+
+
+
+
+
+
 
