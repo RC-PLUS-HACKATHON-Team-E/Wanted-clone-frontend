@@ -38,3 +38,14 @@ export const AsideWrap = styled.aside`
   background-color: #fff;
 `;
 
+export const CustomHr = styled.hr`
+  display: block;
+  unicode-bidi: isolate;
+  margin-block-start: 0.5em;
+  margin-block-end: 0.5em;
+  margin-inline-start: auto;
+  margin-inline-end: auto;
+  overflow: hidden;
+  border-style: inset;
+  border-width: 0.1rem;
+`;
