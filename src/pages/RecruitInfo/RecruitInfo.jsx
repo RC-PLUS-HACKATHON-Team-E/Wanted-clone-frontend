@@ -8,7 +8,6 @@ import ImageCarousel from "../../components/Carousel/Carousel";
 import AddInfo from "../../components/AddInfo/AddInfo";
 import CompanyBox from "../../components/CompanyBox/CompanyBox";
 import WarningBox from "../../components/WarningBox/WarningBox";
-import { ListWrap } from "./Styles";
 import RecruitCard from "../../components/RecruitCard/RecruitCard";
 function RecruitInfo() {
   const imageList = [
@@ -19,7 +18,8 @@ function RecruitInfo() {
 
   return (
     <R.RecruitContainer>
-      <R.JobDetailContainer>
+      <R.MainContainer>
+      <R.TopContainer>
         <R.JobContentWrap>
           <ImageCarousel/>
           <MainInfo/>
@@ -33,28 +33,28 @@ function RecruitInfo() {
           <ApplyBox/>
           <QuestionBox/>
         </R.AsideWrap>
-        <R.ListWrap>
-          <R.ListTitle>OOO님, 이 포지션을 찾고 계셨나요?</R.ListTitle>
-          <R.ListBox>
-            <R.RecruitList>
-              {/*이부분 매핑*/}
-              <R.RecruitBox>
-                <RecruitCard/>
-              </R.RecruitBox>
-              <R.RecruitBox>
-                <RecruitCard/>
-              </R.RecruitBox>
-              <R.RecruitBox>
-                <RecruitCard/>
-              </R.RecruitBox>
-              <R.RecruitBox>
-                <RecruitCard/>
-              </R.RecruitBox>
-            </R.RecruitList>
-          </R.ListBox>
-
-        </R.ListWrap>
-      </R.JobDetailContainer>
+      </R.TopContainer>
+      <R.BottomContainer>
+        <R.ListTitle>OOO님, 이 포지션을 찾고 계셨나요?</R.ListTitle>
+        <R.ListBox>
+          <R.RecruitList>
+            {/*이부분 매핑*/}
+            <R.RecruitBox>
+              <RecruitCard/>
+            </R.RecruitBox>
+            <R.RecruitBox>
+              <RecruitCard/>
+            </R.RecruitBox>
+            <R.RecruitBox>
+              <RecruitCard/>
+            </R.RecruitBox>
+            <R.RecruitBox>
+              <RecruitCard/>
+            </R.RecruitBox>
+          </R.RecruitList>
+        </R.ListBox>
+      </R.BottomContainer>
+      </R.MainContainer>
     </R.RecruitContainer>
   );
 }

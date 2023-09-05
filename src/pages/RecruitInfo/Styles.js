@@ -7,27 +7,37 @@ export const RecruitContainer = styled.div`
   background-color: white;
 `;
 
-//실제 사용 뷰
-export const JobDetailContainer = styled.div`
+export const MainContainer= styled.div`
+  margin: 0 auto;
+  padding: 2rem 0 8rem;
+  //width: 87.72%;
   width: 100%;
   max-width: 1060px;
-  display: flex;
+`;
+
+//실제 사용 뷰
+export const TopContainer = styled.div`
+  display: inline-block;
   flex-direction: column;
-  padding: 2rem 0 8rem;
+  position: relative;
 `;
 
 export const JobContentWrap = styled.div`
   display: inline-block;
   width: calc(100% - 36rem);
   vertical-align: top;
+  margin: 0;
   padding: 0;
+  border: 0;
+
 `;
 
-export const ListWrap = styled.div`
+export const BottomContainer = styled.div`
   font-family: inherit;
   font-size: inherit;
   line-height: inherit;
   margin-top: 8rem;
+  position: relative;
 `;
 
 export const ListTitle = styled.h5`
