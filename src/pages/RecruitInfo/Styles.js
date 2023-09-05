@@ -9,7 +9,9 @@ export const RecruitContainer = styled.div`
 
 export const MainContainer= styled.div`
   margin: 0 auto;
-  padding: 2rem 0 8rem;
+  //원래는 8인데 header 설정 때문에
+  //padding: 2rem 0 8rem;
+  padding: 8rem 0 8rem;
   //width: 87.72%;
   width: 100%;
   max-width: 1060px;
