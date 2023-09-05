@@ -9,12 +9,27 @@ import AddInfo from "../../components/AddInfo/AddInfo";
 import CompanyBox from "../../components/CompanyBox/CompanyBox";
 import WarningBox from "../../components/WarningBox/WarningBox";
 import RecruitCard from "../../components/RecruitCard/RecruitCard";
+import { useSelector, useDispatch } from 'react-redux';
+import { openModal, closeModal } from '../../store/actions/modal';
+import BookmarkModal from "../../components/BookmarkModal/BookmarkModal";
 function RecruitInfo() {
   const imageList = [
     'image1.jpg',
     'image2.jpg',
     'image3.jpg',
   ];
+
+  const isModalOpen = useSelector((state) => state.modal.isModalOpen);
+  // const dispatch = useDispatch();
+
+  // const openBookmarkModal = () => {
+  //   console.log("clickekked");
+  //   dispatch(openModal()); // 모달 열기 액션 디스패치
+  // };
+  //
+  // const closeBookmarkModal = () => {
+  //   dispatch(closeModal()); // 모달 닫기 액션 디스패치
+  // };
 
   return (
     <R.RecruitContainer>
@@ -30,7 +45,7 @@ function RecruitInfo() {
             <WarningBox/>
         </R.JobContentWrap>
         <R.AsideWrap>
-          <ApplyBox/>
+          <ApplyBox />
           <QuestionBox/>
         </R.AsideWrap>
       </R.TopContainer>
@@ -55,6 +70,8 @@ function RecruitInfo() {
         </R.ListBox>
       </R.BottomContainer>
       </R.MainContainer>
+
+      {isModalOpen && <BookmarkModal />}
     </R.RecruitContainer>
   );
 }

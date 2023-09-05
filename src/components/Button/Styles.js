@@ -67,7 +67,6 @@ export const InteractioButton = styled.button`
 export const ButtonImage = styled.svg`
   width: 1.3rem;
   height: 1.7rem;
-  color: rgb(51, 102, 255);
   //max-width: 100%; 
   margin-right: 0.8rem;
   box-sizing: border-box;
