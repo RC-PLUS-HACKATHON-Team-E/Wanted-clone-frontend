@@ -83,5 +83,21 @@ export const InteractionWrap = styled.div`
   justify-content: flex-start; 
 `;
 
+export const ShareBtn = styled.button`
+  position: absolute;
+  top: 2rem;
+  right: 2rem;
+  width: 4rem;
+  height: 4rem;
+  background: #fff;
+  border-radius: 2rem;
+  border: 0.1rem solid #e1e2e3;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 2.2rem;
+  cursor: pointer;
+`;
+
 
 
