@@ -5,6 +5,9 @@ import TextInfo from "../../components/TextInfo/TextInfo";
 import ApplyBox from "../../components/ApplyBox/ApplyBox";
 import QuestionBox from "../../components/QuestionBox/QuestionBox";
 import ImageCarousel from "../../components/Carousel/Carousel";
+import AddInfo from "../../components/AddInfo/AddInfo";
+import CompanyBox from "../../components/CompanyBox/CompanyBox";
+import WarningBox from "../../components/WarningBox/WarningBox";
 function RecruitInfo() {
   const imageList = [
     'image1.jpg',
@@ -19,9 +22,11 @@ function RecruitInfo() {
           <ImageCarousel/>
           <MainInfo/>
           <TextInfo/>
+          <R.CustomHr />
+            <AddInfo/>
+            <CompanyBox/>
+            <WarningBox/>
         </R.JobContentWrap>
-        {/*면접리뷰*/}
-        <R.InterviewWrap></R.InterviewWrap>
         <R.AsideWrap>
           <ApplyBox/>
           <QuestionBox/>

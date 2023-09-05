@@ -31,4 +31,21 @@ export const SubTitleContent = styled.h6`
   font-family: Pretendard;
 `;
 
+export const SkillLabel = styled.h6`
+  color: #333;
+  margin-top: 2rem;
+  font-weight: 600;
+  font-size: 1.6rem;
+  line-height: 1.75;
+  margin-block-start: 2.33em;
+  margin-block-end: 2.33em;
+  margin-inline-start: 0;
+  margin-inline-end: 0;
+  font-family: Pretendard;
+`;
+
+
+
+
+
 

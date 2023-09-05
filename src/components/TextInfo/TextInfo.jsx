@@ -17,7 +17,7 @@ function TextInfo() {
       <T.TextContent>내용이 들어갑니다.</T.TextContent>
       <T.SubTitleContent>혜택 및 복지</T.SubTitleContent>
       <T.TextContent>내용이 들어갑니다.</T.TextContent>
-
+      <T.SkillLabel>기술스택 ・ 툴</T.SkillLabel>
     </T.TextContainer>
 
   );
