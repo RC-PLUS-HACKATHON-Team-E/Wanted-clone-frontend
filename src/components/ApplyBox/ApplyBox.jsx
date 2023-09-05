@@ -3,9 +3,25 @@ import * as A from './Styles';
 import BookmarkButton from "../Button/BookmarkButton";
 import ApplyButton from "../Button/ApplyButton";
 import InteractionButton from "../Button/InteractionButton";
-import { useDispatch } from "react-redux";
-import { openModal } from "../../store/actions/modal";
+import AvatarSmall from "../Avatar/AvatarSmall";
+import { useSelector } from "react-redux";
 function ApplyBox() {
+
+  const likeCount = useSelector((state) => state.like.likeCount);
+
+  const renderAvatarSmall = (count) => {
+    const avatars = [];
+    for (let i = 0; i < count; i++) {
+      const zIndex = likeCount - i;
+      const marginLeft = i > 0 ? "1.2rem" : "0";
+      console.log(`Avatar ${i}: zIndex=${zIndex}, marginLeft=${marginLeft}`);
+      avatars.push( <AvatarSmall
+        key={i}
+        style={{ zIndex, marginLeft }}
+      />);
+    }
+    return avatars;
+  };
 
 
 
@@ -23,7 +39,6 @@ function ApplyBox() {
             <A.NumberLabel>500,000원</A.NumberLabel>
           </A.ContextBox>
         </A.ContentBox>
-
       </A.ContentWrap>
       <A.ShareBtn>
         <svg width="22" height="22" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
@@ -33,7 +48,10 @@ function ApplyBox() {
       <BookmarkButton label="북마크하기" />
       <ApplyButton label="지원하기" />
       <A.InteractionWrap>
-        <InteractionButton likeCount="0" />
+        <InteractionButton />
+        <A.AvatarBox>
+          {renderAvatarSmall(likeCount)}
+        </A.AvatarBox>
       </A.InteractionWrap>
     </A.ApplyContainer>
   );
