@@ -4,13 +4,17 @@ import { ReactComponent as Google } from "../../assets/google.svg";
 import { ReactComponent as Apple } from '../../assets/apple.svg';
 import { ReactComponent as Kakao } from '../../assets/kakao.svg';
 import Styles from './Login.module.css'; // CSS 모듈 import
+import { useDispatch, useSelector } from 'react-redux';
+import { login, logout, updateuser, signin } from '../../store/actions/login';
 import { useNavigate } from "react-router-dom";
+
 
 function Login(props) {
   let [email, setEmail] = useState('');
   let [selectedLanguage, setSelectedLanguage] = useState('ko');
   let flagImageSrc = '';
   let [emailIsValid, setEmailIsValid] = useState();
+  let dispatch = useDispatch();
   let navigate = useNavigate();
 
   if (selectedLanguage === 'ko') {
@@ -38,6 +42,7 @@ function Login(props) {
     if (email === 'abc@gmail.com') {
       navigate('/login/password');
     } else {
+      dispatch(signin(email));//회원가입이던 로그인이던 유저 이메일 저장
       navigate('/signup');
     }
   };

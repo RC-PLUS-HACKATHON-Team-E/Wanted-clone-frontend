@@ -12,3 +12,8 @@ export const updateuser = (payload) => ({
   type: 'UPDATE_USER',
   payload,
 });
+
+export const signin = (email) => ({
+  type: 'SIGNIN',
+  payload: { email },
+});
