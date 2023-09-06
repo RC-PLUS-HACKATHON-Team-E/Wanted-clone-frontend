@@ -7,7 +7,8 @@ import { useNavigate } from "react-router-dom";
 function PasswordInput(props) {
   let [Password, setPassword] = useState('');
   let [PwIsValid, setPwIsValid] = useState(true);
-  let auth = useSelector((state) => state.auth);
+  const userEmail = useSelector(state => state.auth.userEmail); //아직 로그인 전 단계
+
   let dispatch = useDispatch();
   let navigate = useNavigate();
 
@@ -20,17 +21,46 @@ function PasswordInput(props) {
   const handlePwCheck = (e) => {
     e.preventDefault();
 
-    if (Password === 'abc1234@') {
-      dispatch(login());
-      dispatch(updateuser('kim'));
-      console.log(auth);
-      navigate('/');
-      setPwIsValid(true);
-    } else {
-      dispatch(logout());
-      setPwIsValid(false);
-    }
+    const formData = new FormData();
+    formData.append('password', Password);
+    formData.append('username', userEmail);
+
+    axios.post('/users/sign-in', {/*파라미터의 키(key) 이름은 원하는 대로 정의할 수 O 하지만 주의할 점은, 사용하는 API의 문서나 요구사항에 따라 정해진 키 이름을 사용해야 할 수도 O API가 특정 키 이름을 요구하지 않는 경우에는 자유롭게 원하는 키 이름을 사용할 수 O*/
+      params: formData,
+    })
+      .then((response) => {
+        console.log(response.data);
+        if (response.data.isSuccess) {
+          dispatch(login(userEmail)); //로그인에 성공한 유저 정보만이 저장
+          console.log('유저로그인 성공 -> 유저정보 저장',auth);
+          setPwIsValid(true);
+          navigate('/');
+        } else {
+          console.log('유저로그인 실패 -> 유저정보 저장x',auth);
+          setPwIsValid(false);
+          alert('비밀번호가 틀렸습니다.');
+        }
+      })
+      .catch((error) => {
+        console.error('Error checking password:', error);
+        alert('비밀번호 확인 중 오류가 발생했습니다.');
+      });
+
+    // if (Password === 'abc1234@') {
+    //   dispatch(login());
+    //   dispatch(updateuser('kim'));
+    //   console.log(auth);
+    //   navigate('/');
+    //   setPwIsValid(true);
+    // } else {
+    //   dispatch(logout());
+    //   setPwIsValid(false);
+    // }
   }
+
+  // useEffect(() => {
+  //   console.log('전달받은 이메일:', userEmail);
+  // }, []);
 
   return (
     <div className={Styles['pwinput-background']}>
@@ -60,7 +90,7 @@ function PasswordInput(props) {
               onChange={handlePwChange}
             ></input>
             {Password.length > 0 &&
-                <div className={`${Styles.pwinput} ${PwIsValid ? Styles.success : Styles.error}`}>
+              <div className={`${Styles.pwinput} ${PwIsValid ? Styles.success : Styles.error}`}>
                 비밀번호가 일치하지 않습니다.
               </div>}
             <button

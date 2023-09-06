@@ -13,6 +13,16 @@ function AppHeader(props) {
   let dispatch = useDispatch();
   let navigate = useNavigate();
 
+  const LogOut = () => {
+    axios.get('/users/sign-out')
+        .then((response) => {
+            console.log('로그아웃 성공:', response);
+            dispatch(logout());
+        }).catch((error) => {
+            console.error('로그아웃 실패:', error);
+        });
+}
+
   return (
     <header className={styles['App-header']}>
       <div className={styles['mainbar']}>
@@ -49,7 +59,7 @@ function AppHeader(props) {
               </li>}
             {auth.isLoggedIn ?
               <li className={styles['aside-item']}>
-                <button type="button" className={styles['user-profileButton']} onClick={() => { dispatch(logout()); }}>
+                <button type="button" className={styles['user-profileButton']} onClick={LogOut}>
                   <div className={styles['avatarBorder']}>
                     <div className={styles['avatarImage']}></div>
                   </div>
@@ -81,7 +91,7 @@ function AppHeader(props) {
           </div>
         </div>
         {auth.isLoggedIn ?
-          <button type="button" className={styles['user-profileButton']} onClick={() => { dispatch(logout()); }}>
+          <button type="button" className={styles['user-profileButton']} onClick={LogOut}>
             <div className={styles['avatarBorder']}>
               <div className={styles['avatarImage']}></div>
             </div>

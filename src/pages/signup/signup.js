@@ -3,10 +3,14 @@ import { ReactComponent as Bluecheck } from "../../assets/bluecheck.svg";
 import { ReactComponent as Gradualchange } from '../../assets/gradualchange.svg';
 import { ReactComponent as Wantedlogo } from '../../assets/wantedlogo.svg';
 import Styles from './Signup.module.css'; // CSS 모듈을 import
+import { useDispatch, useSelector } from 'react-redux';
+import { login } from '../../store/actions/login';
 import { useNavigate } from "react-router-dom";
+import axios from "axios";
 
 function Signup(props) {
-    let [email, setEmail] = useState('abc@naver.com');
+    let dispatch = useDispatch();
+    let navigate = useNavigate();
     let [name, setName] = useState('');
     let [password, setPassword] = useState('');
     let [passwordConfirm, setPasswordConfirm] = useState('');
@@ -19,11 +23,13 @@ function Signup(props) {
     let [isPnValid, setIsPnValid] = useState(false);
     let [passwordMatch, setpasswordMatch] = useState(true);
     let [receivedAuth, setReceivedAuth] = useState(false);
-
-    let navigate = useNavigate();
+    const userEmail = useSelector(state => state.auth.userEmail);
 
     const handlePhoneChange = (e) => {
-        setPhone(e.target.value);
+        setUserData({
+            ...userData,
+            phone: e.target.value,
+          });
         setReceivedAuth(false);
         validatePhonenum(e.target.value);
     };
@@ -41,7 +47,10 @@ function Signup(props) {
     };
 
     const handleNameChange = (e) => {
-        setName(e.target.value);
+        setUserData({
+            ...userData,
+            name: e.target.value,
+        });
     };
 
     const handleSendVerificationCode = () => {
@@ -51,12 +60,15 @@ function Signup(props) {
     const handlePasswordChange = (e) => {
         const newPassword = e.target.value;
         setPassword(newPassword);
-        validatePassword(newPassword, passwordConfirm);
+        validatePassword(newPassword, userData.password);
     };
 
     const handlePasswordConfirmChange = (e) => {
         const confirmPassword = e.target.value;
-        setPasswordConfirm(confirmPassword);
+        setUserData({
+            ...userData,
+            password: e.target.value,
+          });
         validatePassword(password, confirmPassword);
     };
 
@@ -75,9 +87,7 @@ function Signup(props) {
 
     const handleSignupSubmit = (e) => {
         e.preventDefault();
-        if (isFormValid) {
-            navigate('/skillselect');
-        }
+        sendUserData();
     };
 
     const [isAllChecked, setIsAllChecked] = useState(false);
@@ -128,6 +138,29 @@ function Signup(props) {
                 break;
         }
     };
+    
+    const sendUserData = () => {
+        axios.post('/users/sign-up', userData,  { params: {username: userEmail} })
+            .then((response) => {
+                if (isFormValid) {
+                    navigate('/skillselect');
+                }
+                //회원가입 성공시 유효성 검사로 쓰인 이메일 데이터 초기화
+                dispatch(validate(null));
+                console.log('유저데이터', userData);
+                console.log('유저 데이터 전송 성공:', response);
+            }).catch((error) => {
+                console.log('수정정보',userData);
+                console.error('유저 데이터 전송 실패:', error);
+            });
+    }
+
+    let [userData, setUserData] = useState({
+        email: userEmail,
+        name: '',
+        password: '',
+        phoneNumber: '',
+      });
 
     useEffect(() => {
         const Valid =
@@ -135,22 +168,23 @@ function Signup(props) {
             isTermsChecked &&
             isPrivacyChecked &&
             passwordMatch &&
-            name &&
+            userData.name &&
             verificationCode;
 
         setIsFormValid(Valid);
-    }, [isAgeChecked, isTermsChecked, isPrivacyChecked, passwordMatch, name, isCodeValid]);
+    }, [isAgeChecked, isTermsChecked, isPrivacyChecked, passwordMatch, userData.name, isCodeValid]);
 
     useEffect(() => {
         handleSendVerificationCode(verificationCode);
     }, [verificationCode]);
 
     useEffect(() => {
+        console.log('전달받은 이메일:', userEmail);
         setReceivedAuth(false);
     }, []);
 
     return (
-        <div className={Styles['login-background']}>
+        <div className={Styles['signup-background']}>
             <div className={Styles['wanted-logo-wrapper']}>
                 <Gradualchange width="50" height="20"></Gradualchange>
                 <Wantedlogo width="87.5" height="20"></Wantedlogo>
@@ -163,6 +197,7 @@ function Signup(props) {
                             className={Styles['signup-cancel-btn']}
                             onClick={() => {
                                 if (window.confirm('회원가입을 취소하고 이전 화면으로 되돌아갑니다. 계속하시겠어요?')) {
+                                    dispatch(validate(null));
                                     navigate('/login');
                                 }
                             }}
@@ -182,7 +217,7 @@ function Signup(props) {
                         </div>
                         <input
                             type="email"
-                            value={email}
+                            value={userEmail}
                             name="email"
                             id="email"
                             className={Styles['email-input-block']}
@@ -193,7 +228,7 @@ function Signup(props) {
                         </div>
                         <input
                             type="text"
-                            value={name}
+                            value={userData.name}
                             placeholder="이름을 입력해주세요."
                             name="name"
                             id="name"
@@ -219,7 +254,7 @@ function Signup(props) {
                         <div className={Styles['phone-input-wrapper']}>
                             <input
                                 type="text"
-                                value={phone}
+                                value={userData.phone}
                                 placeholder="(예시) 01013245768"
                                 name="phone"
                                 id="phone"
@@ -265,7 +300,7 @@ function Signup(props) {
                         )}
                         <input
                             type="password"
-                            value={passwordConfirm}
+                            value={userData.password}
                             placeholder="비밀번호를 다시 한번 입력해주세요."
                             name="passwordConfirm"
                             id="passwordConfirm"
@@ -273,7 +308,7 @@ function Signup(props) {
                                 }`}
                             onChange={handlePasswordConfirmChange}
                         ></input>
-                        {passwordConfirm.length > 0 && (
+                        {userData.password.length > 0 && (
                             <div className={`${Styles['passwordConfirm']} ${passwordMatch ? Styles['success'] : Styles['error']}`}>
                                 비밀번호가 서로 일치하지 않습니다.
                             </div>
