@@ -5,7 +5,7 @@ import { ReactComponent as Apple } from '../../assets/apple.svg';
 import { ReactComponent as Kakao } from '../../assets/kakao.svg';
 import Styles from './Login.module.css'; // CSS 모듈 import
 import { useDispatch, useSelector } from 'react-redux';
-import { login, logout, signin } from '../../store/actions/login';
+import { login, logout, signin, validate } from '../../store/actions/login';
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
 
@@ -41,15 +41,15 @@ function Login(props) {
 
   const handleEmailCheck = (e) => {
     e.preventDefault();
-    axios.get('/users/validate-duplicate', {
-      params: {email: email},
+    axios.get(process.env.REACT_APP_SERVER_BASE_URL+'/users/validate-duplicate', {
+      params: { email: email },
     }).then((response) => {
-      console.log(response.data);
-      if (response.data) {
-        dispatch(login(email));//로그인한 유저의 최소정보
+      dispatch(validate(email));
+      if (response.data==='duplicated') {
+        // dispatch(validate(email)); 로그인한 유저의 최소정보
         navigate('/login/password');
-      } else {
-        dispatch(validate(email));//로그인아니라도 회원가입시 사용할 유저 이메일 저장
+      } else if (response.data==='unduplicated') {
+        // dispatch(validate(email)); 로그인아니라도 회원가입시 사용할 유저 이메일 저장
         navigate('/signup');
       }
     }).catch((error) => {
