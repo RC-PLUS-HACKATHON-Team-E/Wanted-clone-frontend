@@ -18,22 +18,22 @@ const RecruitInfo = React.lazy(() => import('./pages/RecruitInfo/RecruitInfo'));
 const App = () => {
 
   return (
-      <Suspense fallback={loading}>
-        <Routes>
-          <Route path='/' element={<DefaultLayout />}>
-            <Route index element={<Login />} />
+    <Suspense fallback={loading}>
+      <Routes>
+        <Route path='/' element={<DefaultLayout />}>
+          <Route index element={<Login />} />
           <Route path='/login/email' element={<Login />} />
           <Route path='/login/password' element={<PasswordInput />} />
           <Route path='/signup' element={<Signup />} />
-          <Route path='/skillselect' element={<SkillSelection  />} />
+          <Route path='/skillselect' element={<SkillSelection />} />
           <Route path='/workplacesetup' element={<Workplacesetup />} />
           <Route path='/tagsetup' element={<Tagsetup />} />
           <Route path='/recruitInfo' element={<RecruitInfo />} />
           <Route exact path='/404' name='Page 404' element={<Page404 />} />
           <Route exact path='/500' name='Page 500' element={<Page500 />} />
-          </Route>
-        </Routes>
-      </Suspense>
+        </Route>
+      </Routes>
+    </Suspense>
   );
 };
 

@@ -1,20 +1,20 @@
 //action 설정
 
-export const login = (name, password) => ({
+export const login = (name) => ({
   type: 'LOGIN',
-  payload: { name, password },
+  payload: { name },
 });
 
 export const logout = () => ({
   type: 'LOGOUT',
 });
 
-export const updateuser = (payload) => ({
-  type: 'UPDATE_USER',
-  payload,
-});
+// export const updateuser = (payload) => ({
+//   type: 'UPDATE_USER',
+//   payload,
+// });
 
-export const signin = (email) => ({
-  type: 'SIGNIN',
+export const validate = (email) => ({
+  type: 'VALIDATE',
   payload: { email },
 });
