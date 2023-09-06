@@ -4,7 +4,7 @@ import { ReactComponent as Gradualchange } from '../../assets/gradualchange.svg'
 import { ReactComponent as Wantedlogo } from '../../assets/wantedlogo.svg';
 import Styles from './Signup.module.css'; // CSS 모듈을 import
 import { useDispatch, useSelector } from 'react-redux';
-import { login } from '../../store/actions/login';
+import { login, validate } from '../../store/actions/login';
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
 
@@ -28,7 +28,7 @@ function Signup(props) {
     const handlePhoneChange = (e) => {
         setUserData({
             ...userData,
-            phone: e.target.value,
+            phoneNumber: e.target.value,
           });
         setReceivedAuth(false);
         validatePhonenum(e.target.value);
@@ -140,7 +140,7 @@ function Signup(props) {
     };
     
     const sendUserData = () => {
-        axios.post('/users/sign-up', userData,  { params: {username: userEmail} })
+        axios.post(process.env.REACT_APP_SERVER_BASE_URL+'/users/sign-up', userData,  { params: {username: userEmail} })
             .then((response) => {
                 if (isFormValid) {
                     navigate('/skillselect');
@@ -151,7 +151,7 @@ function Signup(props) {
                 console.log('유저 데이터 전송 성공:', response);
             }).catch((error) => {
                 console.log('수정정보',userData);
-                console.error('유저 데이터 전송 실패:', error);
+                console.error('유저 데이터 전송 실패:', error.response.data);
             });
     }
 
