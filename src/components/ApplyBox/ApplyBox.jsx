@@ -13,11 +13,11 @@ function ApplyBox() {
     const avatars = [];
     for (let i = 0; i < count; i++) {
       const zIndex = likeCount - i;
-      const marginLeft = i > 0 ? "1.2rem" : "0";
+      const marginLeft = i > 0 ? "-1.2rem" : "0";
       console.log(`Avatar ${i}: zIndex=${zIndex}, marginLeft=${marginLeft}`);
       avatars.push( <AvatarSmall
         key={i}
-        style={{ zIndex, marginLeft }}
+        style={{  zIndex, marginLeft }}
       />);
     }
     return avatars;

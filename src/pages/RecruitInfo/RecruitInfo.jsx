@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from "react";
 import * as R from './Styles';
 import MainInfo from "../../components/MainInfo/MainInfo";
 import TextInfo from "../../components/TextInfo/TextInfo";
@@ -12,24 +12,21 @@ import RecruitCard from "../../components/RecruitCard/RecruitCard";
 import { useSelector, useDispatch } from 'react-redux';
 import { openModal, closeModal } from '../../store/actions/modal';
 import BookmarkModal from "../../components/BookmarkModal/BookmarkModal";
+import { fetchRecruitData } from "../../store/middleware/recruitMiddleware";
 function RecruitInfo() {
-  const imageList = [
-    'image1.jpg',
-    'image2.jpg',
-    'image3.jpg',
-  ];
 
   const isModalOpen = useSelector((state) => state.modal.isModalOpen);
-  // const dispatch = useDispatch();
+  const postingId = 1; //하드 코딩
 
-  // const openBookmarkModal = () => {
-  //   console.log("clickekked");
-  //   dispatch(openModal()); // 모달 열기 액션 디스패치
-  // };
-  //
-  // const closeBookmarkModal = () => {
-  //   dispatch(closeModal()); // 모달 닫기 액션 디스패치
-  // };
+  // const { postingId } = match.params;
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(fetchRecruitData(postingId));
+  }, [dispatch, postingId]);
+
+  const recruitData = useSelector((state) => state.recruit.recruitData);
+
 
   return (
     <R.RecruitContainer>

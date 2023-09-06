@@ -71,7 +71,7 @@ npm run build-prod //
 | | └── reducers
 | ├── utils/
 | ├── App.js
-| ├── index.js
+| ├── RootReducer.js
 | └── routes.js
 ├── .gitignore/
 ├── .env
@@ -185,7 +185,7 @@ store 폴더는 ~~하는 코드들이 위치해 있습니다.
 > src > 그밖의 파일들
 ```
 - App.js : (설명이 들어갑니다.)
-- index.js : (설명이 들어갑니다.)
+- RootReducer.js : (설명이 들어갑니다.)
 - routes.js : (설명이 들어갑니다.)
 
 ```
