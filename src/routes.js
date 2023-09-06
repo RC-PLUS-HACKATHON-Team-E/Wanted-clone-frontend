@@ -14,7 +14,7 @@ const Tagsetup = React.lazy(() => import('./pages/UserDetails/tagsetup'));
 const RecruitInfo = React.lazy(() => import('./pages/RecruitInfo/RecruitInfo'));
 
 const routes = [
-  {path: '/', name: 'Login', element: Login},
+  {path: '/', name: 'Home', element: Home},
   {path: '/dashboard', name: 'Dashboard', element: Dashboard},
   {path: '/404', name: '404', element: Page404},
   {path: '/500', name: '500', element: Page500},

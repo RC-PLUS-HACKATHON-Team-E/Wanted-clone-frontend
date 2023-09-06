@@ -14,7 +14,7 @@ function AppHeader(props) {
   let navigate = useNavigate();
 
   const LogOut = () => {
-    axios.get('/users/sign-out')
+    axios.get(process.env.REACT_APP_SERVER_BASE_URL+'/users/sign-out')
         .then((response) => {
             console.log('로그아웃 성공:', response);
             dispatch(logout());
@@ -127,4 +127,3 @@ function AppHeader(props) {
 }
 
 export default AppHeader;
-
