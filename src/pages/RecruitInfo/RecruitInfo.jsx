@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from "react";
 import * as R from './Styles';
 import MainInfo from "../../components/MainInfo/MainInfo";
 import TextInfo from "../../components/TextInfo/TextInfo";
@@ -9,12 +9,28 @@ import AddInfo from "../../components/AddInfo/AddInfo";
 import CompanyBox from "../../components/CompanyBox/CompanyBox";
 import WarningBox from "../../components/WarningBox/WarningBox";
 import RecruitCard from "../../components/RecruitCard/RecruitCard";
+import { useSelector, useDispatch } from 'react-redux';
+import { openModal, closeModal } from '../../store/actions/modal';
+import BookmarkModal from "../../components/BookmarkModal/BookmarkModal";
+import { fetchRecruitData } from "../../store/middleware/recruitMiddleware";
+import AvatarModal from "../../components/AvatarModal/AvatarModal";
+import { useParams } from "react-router-dom";
 function RecruitInfo() {
-  const imageList = [
-    'image1.jpg',
-    'image2.jpg',
-    'image3.jpg',
-  ];
+
+  const isModalOpen = useSelector((state) => state.modal.isModalOpen);
+  const isAvatarOpen = useSelector((state) => state.avatar.isAvatarOpen);
+
+  const likeCount = useSelector((state) => state.like.likeCount);
+
+  const { postingId } = useParams();
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(fetchRecruitData(postingId));
+  }, [dispatch, postingId]);
+
+  // const recruitData = useSelector((state) => state.recruit.recruitData);
+
 
   return (
     <R.RecruitContainer>
@@ -30,7 +46,7 @@ function RecruitInfo() {
             <WarningBox/>
         </R.JobContentWrap>
         <R.AsideWrap>
-          <ApplyBox/>
+          <ApplyBox postingId={postingId}/>
           <QuestionBox/>
         </R.AsideWrap>
       </R.TopContainer>
@@ -55,6 +71,9 @@ function RecruitInfo() {
         </R.ListBox>
       </R.BottomContainer>
       </R.MainContainer>
+
+      {isModalOpen && <BookmarkModal />}
+      {isAvatarOpen && <AvatarModal postingId={postingId}/>}
     </R.RecruitContainer>
   );
 }

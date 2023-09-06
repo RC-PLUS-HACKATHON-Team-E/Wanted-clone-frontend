@@ -14,6 +14,7 @@ const SkillSelection = React.lazy(() => import('./pages/UserDetails/skillselecti
 const Workplacesetup = React.lazy(() => import('./pages/UserDetails/workplacesetup'));
 const Tagsetup = React.lazy(() => import('./pages/UserDetails/tagsetup'));
 const RecruitInfo = React.lazy(() => import('./pages/RecruitInfo/RecruitInfo'));
+const Recruit = React.lazy(() => import('./pages/Recruit/Recruit'));
 
 const App = () => {
 
@@ -28,7 +29,8 @@ const App = () => {
           <Route path='/skillselect' element={<SkillSelection />} />
           <Route path='/workplacesetup' element={<Workplacesetup />} />
           <Route path='/tagsetup' element={<Tagsetup />} />
-          <Route path='/recruitInfo' element={<RecruitInfo />} />
+          <Route path='/recruitInfo/:postingId' element={<RecruitInfo />} />
+          <Route path='/recruit' element={<Recruit />} />
           <Route exact path='/404' name='Page 404' element={<Page404 />} />
           <Route exact path='/500' name='Page 500' element={<Page500 />} />
         </Route>

@@ -1,17 +1,75 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import * as B from './Styles';
+import axios from "axios";
+import { useDispatch, useSelector } from "react-redux";
+import { setLikeCount } from "../../store/actions/like";
 
-function InteractionButton({ likeCount, onLikeClick }) {
+
+function InteractionButton({postingId}) {
+
+  console.log("전달받은값:", postingId);
+
+
+  // const { postingId } = props;
   const [isLiked, setIsLiked] = useState(false);
-  const handleLikeClick = () => {
-    // 클릭 시 아이콘 상태를 변경
-    setIsLiked(!isLiked);
-    // 아이콘 상태를 부모 컴포넌트로 전달
-    onLikeClick(!isLiked);
+  // const [postingId, setpostingId] = useState(1);
+
+  const likeCount = useSelector((state) => state.like.likeCount);
+  const dispatch = useDispatch();
+
+  // const handleLikeClick = async () => {
+  // setIsLiked(!isLiked);
+
+  const handleLikeClick = async () => {
+
+    console.log("포스팅 아이디는", postingId);
+    console.log(isLiked);
+
+    try {
+      if (isLiked) {
+        await axios.delete(`http://3.34.237.206:8080/posts/${postingId}/likes`, {
+          params: {
+            "posting-id": postingId
+          }
+        });
+        console.log("좋아요 취소 성공");
+      } else {
+        await axios.post(`http://3.34.237.206:8080/posts/${postingId}/likes`, {
+          params: {
+            "posting-id": postingId
+          }
+        });
+        console.log("좋아요 누르기 성공");
+      }
+      setIsLiked(!isLiked);
+    } catch (error) {
+      console.error("Error sending like request:", error);
+    }
   };
+
+
+
+  useEffect(() => {
+    axios
+      .get(`http://3.34.237.206:8080/posts/${postingId}/likes`, {
+        params: {
+          "posting-id": postingId
+        }
+      })
+      .then((response) => {
+        console.log("좋아요 get하는 부분", response.data);
+        dispatch(setLikeCount(response.data.count));
+        console.log("좋아요 바귄건", likeCount);
+      })
+      .catch((error) => {
+        console.error('Error:', error);
+      });
+  }, [likeCount]);
+
 
   return (
     <B.InteractioButton onClick={handleLikeClick}>
+      <B.IconWrap>
       {isLiked ? (
         <B.HeartIcon
           xmlns="http://www.w3.org/2000/svg"
@@ -41,6 +99,7 @@ function InteractionButton({ likeCount, onLikeClick }) {
         </B.HeartIcon>
       )}
       <B.IconLabel>{likeCount}</B.IconLabel>
+      </B.IconWrap>
     </B.InteractioButton>
   );
 }

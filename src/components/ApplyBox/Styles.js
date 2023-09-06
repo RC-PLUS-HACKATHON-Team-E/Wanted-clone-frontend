@@ -76,12 +76,33 @@ export const NumberLabel = styled.p`
 `;
 
 export const InteractionWrap = styled.div`
+  width: 100%;
   margin-top: 2.4rem;
   display: flex;
   flex-direction: row;
   align-items: center;
-  justify-content: flex-start; 
 `;
+
+export const ShareBtn = styled.button`
+  position: absolute;
+  top: 2rem;
+  right: 2rem;
+  width: 4rem;
+  height: 4rem;
+  background: #fff;
+  border-radius: 2rem;
+  border: 0.1rem solid #e1e2e3;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 2.2rem;
+  cursor: pointer;
+`;
+
+export const AvatarBox = styled.div`
+  display: flex;
+  cursor: pointer;
+  align-items: center;`;
 
 
 
