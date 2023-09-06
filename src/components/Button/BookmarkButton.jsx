@@ -4,7 +4,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { openModal } from "../../store/actions/modal";
 
 
-function BookmarkButton({ label }) {
+function BookmarkButton() {
   const dispatch = useDispatch();
   const isModalOpen = useSelector((state) => state.modal.isModalOpen);
 

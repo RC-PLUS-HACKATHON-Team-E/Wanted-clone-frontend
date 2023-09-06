@@ -13,10 +13,14 @@ import { useSelector, useDispatch } from 'react-redux';
 import { openModal, closeModal } from '../../store/actions/modal';
 import BookmarkModal from "../../components/BookmarkModal/BookmarkModal";
 import { fetchRecruitData } from "../../store/middleware/recruitMiddleware";
+import AvatarModal from "../../components/AvatarModal/AvatarModal";
 function RecruitInfo() {
 
   const isModalOpen = useSelector((state) => state.modal.isModalOpen);
+  const isAvatarOpen = useSelector((state) => state.avatar.isAvatarOpen);
   const postingId = 1; //하드 코딩
+
+  const likeCount = useSelector((state) => state.like.likeCount);
 
   // const { postingId } = match.params;
   const dispatch = useDispatch();
@@ -25,7 +29,7 @@ function RecruitInfo() {
     dispatch(fetchRecruitData(postingId));
   }, [dispatch, postingId]);
 
-  const recruitData = useSelector((state) => state.recruit.recruitData);
+  // const recruitData = useSelector((state) => state.recruit.recruitData);
 
 
   return (
@@ -69,6 +73,7 @@ function RecruitInfo() {
       </R.MainContainer>
 
       {isModalOpen && <BookmarkModal />}
+      {isAvatarOpen && <AvatarModal/>}
     </R.RecruitContainer>
   );
 }

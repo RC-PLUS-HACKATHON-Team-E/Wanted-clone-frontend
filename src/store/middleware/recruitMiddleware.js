@@ -8,10 +8,9 @@ export const fetchRecruitData = (postingId) => async (dispatch) => {
     const response = await axios.get(`/posts/${postingId}`);
     console.log('Response:', response);
 
-    const data = response.data;
+    const data = response.data.count;
     dispatch(fetchRecruitDataSuccess(data));
   } catch (error) {
-    // 오류 처리
   }
 };
 

@@ -6,7 +6,9 @@ function AvatarLarge() {
 
 
   return (
-    <A.AvatarLarge></A.AvatarLarge>
+    <A.AvatarLarge>
+      <A.AvatarImg src="https://static.wanted.co.kr/oneid-user/profile_default.png" alt=""/>
+    </A.AvatarLarge>
 
   );
 }
