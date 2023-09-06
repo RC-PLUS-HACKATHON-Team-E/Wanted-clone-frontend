@@ -11,6 +11,7 @@ import {useNavigate, useLocation} from 'react-router-dom';
  * @category Layout
  */
 const DefaultLayout = () => {
+  const loaction = useLocation();
   // let navigate = useNavigate();
   // let location = useLocation();
   /*const navigate = useNavigate()
@@ -29,7 +30,13 @@ const DefaultLayout = () => {
 
   return (
     <Root>
-      <AppHeader />
+      {location.pathname === '/login/email' ||
+      location.pathname === '/login/password' ||
+      location.pathname === '/signup'||
+      location.pathname === '/skillselect'||
+      location.pathname === '/workplacesetup'||
+      location.pathname === '/tagsetup' 
+      ? null:<AppHeader />}
       <AppContent />
       {/*<AppFooter />*/}
     </Root>

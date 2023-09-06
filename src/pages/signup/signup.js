@@ -140,12 +140,13 @@ function Signup(props) {
     };
     
     const sendUserData = () => {
-        axios.post('/users/sign-up', userData)
+        axios.post('/users/sign-up', userData,  { params: {username: userEmail} })
             .then((response) => {
                 if (isFormValid) {
                     navigate('/skillselect');
                 }
-                // dispatch(login(userData.name, userData.password));
+                //회원가입 성공시 유효성 검사로 쓰인 이메일 데이터 초기화
+                dispatch(validate(null));
                 console.log('유저데이터', userData);
                 console.log('유저 데이터 전송 성공:', response);
             }).catch((error) => {
@@ -183,7 +184,7 @@ function Signup(props) {
     }, []);
 
     return (
-        <div className={Styles['login-background']}>
+        <div className={Styles['signup-background']}>
             <div className={Styles['wanted-logo-wrapper']}>
                 <Gradualchange width="50" height="20"></Gradualchange>
                 <Wantedlogo width="87.5" height="20"></Wantedlogo>
@@ -196,7 +197,7 @@ function Signup(props) {
                             className={Styles['signup-cancel-btn']}
                             onClick={() => {
                                 if (window.confirm('회원가입을 취소하고 이전 화면으로 되돌아갑니다. 계속하시겠어요?')) {
-                                    dispatch(signin(null));
+                                    dispatch(validate(null));
                                     navigate('/login');
                                 }
                             }}

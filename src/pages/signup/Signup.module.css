@@ -2,7 +2,7 @@
     font-family: Pretendard, 'Pretendard JP', 'Pretendard Std', -apple-system, system-ui, BlinkMacSystemFont, Roboto, 'Segoe UI', Helvetica, Arial, 'Apple SD Gothic Neo', 'Malgun Gothic', 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', sans-serif;
 }
 
-.login-background {
+.signup-background {
    width: inherit;
     height: 100%;
     background: #f7f7f7;
@@ -14,9 +14,15 @@
     align-items: center;
 }
 
+.wanted-logo-wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 5px;
+}
+
 .signup-wrapper {
     position: relative;
-    margin-top: 35px;
     background-color: white;
     border: 1px solid rgb(213, 213, 213);
     border-radius: 10px;
@@ -24,7 +30,6 @@
     margin-top: 1.5%;
     width: 400px;
     height: 600px; /* 스크롤 가능한 높이 설정 */
-    max-height: 600px;
     overflow-y: scroll; /* 세로 스크롤바 설정 */
 }
 
