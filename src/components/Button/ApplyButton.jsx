@@ -5,15 +5,10 @@ import { openAvatar } from "../../store/actions/avatar";
 
 function ApplyButton() {
 
-  const dispatch = useDispatch();
-  const isAvatarOpen = useSelector((state) => state.avatar.isAvatarOpen);
-  const openAvatarModal = () => {
-    dispatch(openAvatar());
 
-  };
 
   return (
-    <B.ApplyButton onClick={openAvatarModal}>
+    <B.ApplyButton>
       {/*{imageSrc && <B.ButtonImage src={imageSrc} alt="" />}*/}
       <B.Label>지원하기</B.Label>
     </B.ApplyButton>

@@ -6,6 +6,7 @@ import {likeReducer} from './like';
 import recruitReducer  from './recruit';
 import { avatarReducer } from "./avatar";
 import likedNameReducer from "./likedName";
+import recruitAllReducer from "./recruitAll";
 
 const RootReducer = combineReducers({
   auth: loginReducer,
@@ -13,7 +14,8 @@ const RootReducer = combineReducers({
   like: likeReducer,
   recruit : recruitReducer,
   avatar : avatarReducer,
-  likedName : likedNameReducer
+  likedName : likedNameReducer,
+  recruitAll : recruitAllReducer
 })
 
 export default RootReducer

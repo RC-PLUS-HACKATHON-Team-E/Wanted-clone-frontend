@@ -14,15 +14,15 @@ import { openModal, closeModal } from '../../store/actions/modal';
 import BookmarkModal from "../../components/BookmarkModal/BookmarkModal";
 import { fetchRecruitData } from "../../store/middleware/recruitMiddleware";
 import AvatarModal from "../../components/AvatarModal/AvatarModal";
+import { useParams } from "react-router-dom";
 function RecruitInfo() {
 
   const isModalOpen = useSelector((state) => state.modal.isModalOpen);
   const isAvatarOpen = useSelector((state) => state.avatar.isAvatarOpen);
-  const postingId = 1; //하드 코딩
 
   const likeCount = useSelector((state) => state.like.likeCount);
 
-  // const { postingId } = match.params;
+  const { postingId } = useParams();
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -46,7 +46,7 @@ function RecruitInfo() {
             <WarningBox/>
         </R.JobContentWrap>
         <R.AsideWrap>
-          <ApplyBox />
+          <ApplyBox postingId={postingId}/>
           <QuestionBox/>
         </R.AsideWrap>
       </R.TopContainer>
@@ -73,7 +73,7 @@ function RecruitInfo() {
       </R.MainContainer>
 
       {isModalOpen && <BookmarkModal />}
-      {isAvatarOpen && <AvatarModal/>}
+      {isAvatarOpen && <AvatarModal postingId={postingId}/>}
     </R.RecruitContainer>
   );
 }

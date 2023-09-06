@@ -5,7 +5,8 @@ import ApplyButton from "../Button/ApplyButton";
 import InteractionButton from "../Button/InteractionButton";
 import AvatarSmall from "../Avatar/AvatarSmall";
 import { useSelector } from "react-redux";
-function ApplyBox() {
+function ApplyBox({ postingId }) {
+
 
   const likeCount = useSelector((state) => state.like.likeCount);
 
@@ -48,7 +49,7 @@ function ApplyBox() {
       <BookmarkButton />
       <ApplyButton />
       <A.InteractionWrap>
-        <InteractionButton />
+        <InteractionButton postingId={postingId} />
         <A.AvatarBox>
           {renderAvatarSmall(likeCount)}
         </A.AvatarBox>

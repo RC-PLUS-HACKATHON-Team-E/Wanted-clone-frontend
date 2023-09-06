@@ -5,15 +5,26 @@ import { useDispatch, useSelector } from "react-redux";
 import { setLikeCount } from "../../store/actions/like";
 
 
-function InteractionButton({ }) {
+function InteractionButton({postingId}) {
+
+  console.log("전달받은값:", postingId);
+
+
+  // const { postingId } = props;
   const [isLiked, setIsLiked] = useState(false);
-  const [postingId, setPostingId] = useState(1);
+  // const [postingId, setpostingId] = useState(1);
 
   const likeCount = useSelector((state) => state.like.likeCount);
   const dispatch = useDispatch();
 
+  // const handleLikeClick = async () => {
+  // setIsLiked(!isLiked);
+
   const handleLikeClick = async () => {
-    // 클릭 상태에 따라 POST 또는 DELETE 요청 보내기
+
+    console.log("포스팅 아이디는", postingId);
+    console.log(isLiked);
+
     try {
       if (isLiked) {
         await axios.delete(`http://3.34.237.206:8080/posts/${postingId}/likes`, {
@@ -23,14 +34,12 @@ function InteractionButton({ }) {
         });
         console.log("좋아요 취소 성공");
       } else {
-        // 클릭되지 않은 상태에서 클릭한 경우, POST 요청 보내기
         await axios.post(`http://3.34.237.206:8080/posts/${postingId}/likes`, {
           params: {
             "posting-id": postingId
           }
         });
         console.log("좋아요 누르기 성공");
-        // dispatch(setLikeCount(response.data));
       }
       setIsLiked(!isLiked);
     } catch (error) {

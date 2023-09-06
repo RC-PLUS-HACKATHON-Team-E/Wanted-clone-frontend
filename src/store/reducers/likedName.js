@@ -8,12 +8,12 @@ const initialState = {
 const likedNameReducer = (state = initialState, action) => {
   switch (action.type) {
     case FETCH_LIKES_SUCCESS:
-      const { postId, likes } = action.payload;
+      const { postId, userName } = action.payload;
       return {
         ...state,
         likesByPostId: {
           ...state.likesByPostId,
-          [postId]: likes,
+          [postId]: [...(state.likesByPostId[postId] || []), userName],
         },
         error: null,
       };
