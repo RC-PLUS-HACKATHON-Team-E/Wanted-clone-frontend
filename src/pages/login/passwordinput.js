@@ -27,31 +27,31 @@ function PasswordInput(props) {
     formData.append('username', userEmail);//userEmail
 
     let entries = formData.entries();
-    for (const pair of entries) {
-      console.log('formdata: ', pair[0], pair[1]);
-    }
+        for (const pair of entries) {
+            console.log('formdata: ',pair[0], pair[1]);
+        }
 
-    axios.post(process.env.REACT_APP_SERVER_BASE_URL + '/users/sign-in', {/*파라미터의 키(key) 이름은 원하는 대로 정의할 수 O 하지만 주의할 점은, 사용하는 API의 문서나 요구사항에 따라 정해진 키 이름을 사용해야 할 수도 O API가 특정 키 이름을 요구하지 않는 경우에는 자유롭게 원하는 키 이름을 사용할 수 O*/
+    axios.post(process.env.REACT_APP_SERVER_BASE_URL+'/users/sign-in', {/*파라미터의 키(key) 이름은 원하는 대로 정의할 수 O 하지만 주의할 점은, 사용하는 API의 문서나 요구사항에 따라 정해진 키 이름을 사용해야 할 수도 O API가 특정 키 이름을 요구하지 않는 경우에는 자유롭게 원하는 키 이름을 사용할 수 O*/
       params: formData,
       withCredentials: true,
     })
       .then((response) => {
-        console.log('반환값', response);
-        dispatch(login(userEmail)); //로그인에 성공한 유저 정보만이 저장
-        console.log('유저로그인 성공 -> 유저정보 저장');
-        setPwIsValid(true);
-        navigate('/');
-
+        console.log('반환값',response);
+          dispatch(login(userEmail)); //로그인에 성공한 유저 정보만이 저장
+          console.log('유저로그인 성공 -> 유저정보 저장');
+          setPwIsValid(true);
+          navigate('/');
+  
       })
       .catch((error) => {
-        console.log('에러', error.response.data);
-        if (error.response.data.code === "400") {
+        console.log('에러',error.response.data);
+        if(error.response.data.code === "400"){
           console.log('유저로그인 실패 -> 유저정보 저장x');
           setPwIsValid(false);
           alert('비밀번호가 틀렸습니다.');
         } else {
           console.error('Error checking password:', error);
-          alert('비밀번호 확인 중 오류가 발생했습니다.');
+        alert('비밀번호 확인 중 오류가 발생했습니다.');
         }
       });
   }
