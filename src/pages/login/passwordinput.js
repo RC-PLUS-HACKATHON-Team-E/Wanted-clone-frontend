@@ -3,6 +3,7 @@ import Styles from './PasswordInput.module.css'; // CSS 모듈 import
 import { useDispatch, useSelector } from 'react-redux';
 import { login, logout, updateuser } from '../../store/actions/login';
 import { useNavigate } from "react-router-dom";
+import axios from "axios";
 
 function PasswordInput(props) {
   let [Password, setPassword] = useState('');
@@ -23,44 +24,37 @@ function PasswordInput(props) {
 
     const formData = new FormData();
     formData.append('password', Password);
-    formData.append('username', userEmail);
+    formData.append('username', userEmail);//userEmail
 
-    axios.post('/users/sign-in', {/*파라미터의 키(key) 이름은 원하는 대로 정의할 수 O 하지만 주의할 점은, 사용하는 API의 문서나 요구사항에 따라 정해진 키 이름을 사용해야 할 수도 O API가 특정 키 이름을 요구하지 않는 경우에는 자유롭게 원하는 키 이름을 사용할 수 O*/
+    let entries = formData.entries();
+    for (const pair of entries) {
+      console.log('formdata: ', pair[0], pair[1]);
+    }
+
+    axios.post(process.env.REACT_APP_SERVER_BASE_URL + '/users/sign-in', {/*파라미터의 키(key) 이름은 원하는 대로 정의할 수 O 하지만 주의할 점은, 사용하는 API의 문서나 요구사항에 따라 정해진 키 이름을 사용해야 할 수도 O API가 특정 키 이름을 요구하지 않는 경우에는 자유롭게 원하는 키 이름을 사용할 수 O*/
       params: formData,
+      withCredentials: true,
     })
       .then((response) => {
-        console.log(response.data);
-        if (response.data.isSuccess) {
-          dispatch(login(userEmail)); //로그인에 성공한 유저 정보만이 저장
-          console.log('유저로그인 성공 -> 유저정보 저장',auth);
-          setPwIsValid(true);
-          navigate('/');
-        } else {
-          console.log('유저로그인 실패 -> 유저정보 저장x',auth);
-          setPwIsValid(false);
-          alert('비밀번호가 틀렸습니다.');
-        }
+        console.log('반환값', response);
+        dispatch(login(userEmail)); //로그인에 성공한 유저 정보만이 저장
+        console.log('유저로그인 성공 -> 유저정보 저장');
+        setPwIsValid(true);
+        navigate('/');
+
       })
       .catch((error) => {
-        console.error('Error checking password:', error);
-        alert('비밀번호 확인 중 오류가 발생했습니다.');
+        console.log('에러', error.response.data);
+        if (error.response.data.code === "400") {
+          console.log('유저로그인 실패 -> 유저정보 저장x');
+          setPwIsValid(false);
+          alert('비밀번호가 틀렸습니다.');
+        } else {
+          console.error('Error checking password:', error);
+          alert('비밀번호 확인 중 오류가 발생했습니다.');
+        }
       });
-
-    // if (Password === 'abc1234@') {
-    //   dispatch(login());
-    //   dispatch(updateuser('kim'));
-    //   console.log(auth);
-    //   navigate('/');
-    //   setPwIsValid(true);
-    // } else {
-    //   dispatch(logout());
-    //   setPwIsValid(false);
-    // }
   }
-
-  // useEffect(() => {
-  //   console.log('전달받은 이메일:', userEmail);
-  // }, []);
 
   return (
     <div className={Styles['pwinput-background']}>
